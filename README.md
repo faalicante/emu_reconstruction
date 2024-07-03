@@ -1,8 +1,7 @@
 ## MIC4 CERN
-Microscope 4 at CERN has undergone 3 different correction sets, so far (last update 03/07/24)
+Microscope 4 at CERN has undergone 2 different correction sets, so far (last update 03/07/24)
 1. December 2023, when the microscope was installed.
-2. June 2024,
-3. July 2024, after replacing the broken objective with mic2 one in July 2024.
+2. July 2024, after replacing the broken objective with mic2 one in July 2024.
 
 ### December 2023 corrections
 Matrices to be used in the linking:
