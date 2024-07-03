@@ -1,2 +1,6 @@
-# emu_scanning
-Scripts for SND@LHC emulsion scanning laboratories
+Dec 2023
+RUN3 W1 B3 P36-57
+RUN2 W2 B1 P57-22
+
+Jun 24 mean matrix
+RUN2 W2 B1 P1-21
