@@ -1,2 +1,13 @@
-# emu_scanning
-Scripts for SND@LHC emulsion scanning laboratories
+July 2023
+RUN1 W4 B2
+RUN3 W5 B1 P1-40
+
+Dec 2023
+RUN3 W5 B1 P41-60 + rescans
+
+09 Apr 2024 mean matrix 
+RUN2 W2 B4 P54-57
+
+17 April 2024 mean matrix 
+RUN2 W2 B4 P1-54
+RUN2 W5 B3
