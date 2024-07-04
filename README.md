@@ -5,7 +5,7 @@ Microscope 3 at CERN has undergone 2 different correction sets, so far (last upd
 
 ### December 2023 corrections
 Matrices to be used in the linking:
-`/eos/experiment/sndlhc/emulsionData/2022/ /diff_matrix_*_2021.txt`
+`/eos/experiment/sndlhc/emulsionData/2022/CERN/CALIBRATIONS/mic3/diff_matrix_*_Dec23.txt`
 
 Films scanned with this configuration:
 - RUN3 W1 B3 P36-57
