@@ -1,4 +1,4 @@
-executable = condormos_vsa.sh
+executable = condor_vsa.sh
 arguments = $(ClusterID) $(ProcId) $(PLATENUMBER)
 output = output/vsa.$(ClusterId).$(PLATENUMBER).out
 error = error/vsa.$(ClusterId).$(PLATENUMBER).err
