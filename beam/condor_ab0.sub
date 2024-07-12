@@ -3,8 +3,8 @@ arguments = $(ClusterID) $(ProcId) $(PLATENUMBER)
 output = output/vsa.$(ClusterId).$(PLATENUMBER).out
 error = error/vsa.$(ClusterId).$(PLATENUMBER).err
 log = log/vsa.$(ClusterId).log
-+JobFlavour = "testmatch"
-request_memory = 12GB
++JobFlavour = "tomorrow"
+request_memory = 32GB
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
