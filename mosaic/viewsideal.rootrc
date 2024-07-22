@@ -1,0 +1,22 @@
+fedra.vsa.DoImageMatrixCorr:             1
+fedra.vsa.ImageMatrixCorrSide1:         #put matrices
+fedra.vsa.ImageMatrixCorrSide2:         #put matrices
+
+fedra.vsa.offsetMax:                     10
+fedra.vsa.DZ:                            0
+fedra.vsa.DPHI:                          0
+fedra.vsa.Xfrag:                         10000
+fedra.vsa.Yfrag:                         10000
+fedra.vsa.AFID:                          1
+fedra.vsa.MinPeak:                       25
+#fedra.vsa.HeaderCut:                     abs(eXview-100000)<6000&&abs(eYview-100000)<6000
+
+fedra.vsa.sigmaR:                        0.5
+fedra.vsa.sigmaT:                        0.005
+fedra.vsa.ICUT:                          -1     -500. 500.   -500.   500.    -1.   1.      -1.   1.       8.  50.
+fedra.vsa.XCUT:                          -1     -500. 500.   -500.   500.    0.   0.      0.   0.       0.  0.
+fedra.vsa.DoFine:                        1
+fedra.vsa.SaveCouples:                   1
+viewsideal.outdir:                       ..
+viewsideal.env:                          viewsideal.rootrc
+viewsideal.EdbDebugLevel:                1
