@@ -26,7 +26,7 @@ There is no need to apply offline matrices, as `mean_matrix.bin` was used.
 
 Films scanned with this configuration:
 - RUN3 W3 B1 P51, 56
-- RUN2 W3 B2 P02, 46
+- RUN2 W3 B2 P02, 52
 
 
-*last update: 10/07/24*
+*last update: 22/07/24*
