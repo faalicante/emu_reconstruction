@@ -1,8 +1,8 @@
 executable = condor_ab0.sh
 arguments = $(ClusterID) $(ProcId) $(PLATENUMBER)
-output = output/vsa.$(ClusterId).$(PLATENUMBER).out
-error = error/vsa.$(ClusterId).$(PLATENUMBER).err
-log = log/vsa.$(ClusterId).log
+output = output/ab0.$(ClusterId).$(PLATENUMBER).out
+error = error/ab0.$(ClusterId).$(PLATENUMBER).err
+log = log/ab0.$(ClusterId).log
 +JobFlavour = "tomorrow"
 request_memory = 32GB
 notification = Never
