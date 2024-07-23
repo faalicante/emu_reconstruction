@@ -9,6 +9,16 @@ TString path = TString(Form("/eos/experiment/sndlhc/emulsionData/2022/emureco_Na
 // Change where to save the plots
 TString plotpath = TString(Form("/eos/user/s/snd2na/emu_reco_plots/RUN%i/b%06d", run, brick));
 
+Double_t getMeanEntries(TH2F *h2){
+	TH1I tmp("tmp", "tmp", 100, h2->GetMinimum(), h2->GetMaximum());
+  	for(int ux = 0; ux<h2->GetNbinsX();ux++){
+        	for(int uy = 0; uy<h2->GetNbinsY();uy++){
+                	tmp.Fill(h2->GetBinContent(ux, uy));
+        	}
+  	}
+	return tmp.GetMean();
+}
+
 void check_mos_side(int plate, int side) {
   TCut cside("cside",Form("s1.Side()==%d",side));
   TCut nocoin("nocoin","s2.eW>0");
@@ -61,6 +71,7 @@ void check_mos_area(int plate, int side) {
   }
 
   TCanvas *c = new TCanvas(Form("c_%i_%i", plate, side), Form("Mosaic plate %i side %i", plate, side), 800, 800);
+  h2->SetMaximum(getMeanEntries(h2)*2.8);
   h2->Draw("COLZ");
   c->Print(Form((plotpath+"/mosaic/mosaic_plate%i_%i.png"), plate, side));
 }
