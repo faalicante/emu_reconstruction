@@ -1,7 +1,0 @@
-fedra.tag.save_gif:                      1
-fedra.tag.save_canvas:                   0
-fedra.tag.RemoveDoublets:                1    2. .01   1
-fedra.tag.DumpDoubletsTree:              0
-mostag.outdir:                           ..
-mostag.env:                              mostag.rootrc
-mostag.EdbDebugLevel:                    1

@@ -15,5 +15,5 @@ source /afs/cern.ch/work/s/snd2na/public/fedra/setup_new.sh
 echo  "go into reconstruction folder "
 cd /eos/experiment/sndlhc/emulsionData/2022/emureco_Napoli/RUN$RUN/$BRICKFOLDER
 
-echo "viewsideal $BRICKID.$PLATENUMBER.0.0"
-source viewsideal.sh $BRICKID $PLATENUMBER
+echo "mostag $BRICKID.$PLATENUMBER.0.0"
+source mostag.sh $BRICKID $PLATENUMBER
