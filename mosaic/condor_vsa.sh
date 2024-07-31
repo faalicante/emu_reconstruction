@@ -1,7 +1,7 @@
 #!/bin/bash
 
-RUN=        #put run number
-BRICKID=    #put brick id
+RUN= #put run number
+BRICKID= #put brick id
 BRICKFOLDER="$(printf "b%0*d" 6 $BRICKID)"
 PLATENUMBER=$3
 
@@ -13,9 +13,6 @@ source /afs/cern.ch/user/s/snd2cern/public/fedra/setup_new.sh
 
 echo  "go into reconstruction folder "
 cd /eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$RUN/$BRICKFOLDER
-
-echo "viewsideal $BRICKID.$PLATENUMBER.0.0"
-source viewsideal.sh $BRICKID $PLATENUMBER
 
 echo "mostag $BRICKID.$PLATENUMBER.0.0"
 source mostag.sh $BRICKID $PLATENUMBER
