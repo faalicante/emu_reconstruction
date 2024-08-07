@@ -14,8 +14,8 @@ HXY hxy={xb,yb,xmin,xmin+xview*xb,ymin,ymin+yb*yview};
 void draw_diff6();
 TH1F *Spectrum(TH2D &h2, const char *name);
 
-const int brick = 52;
-TString path = TString("/eos/experiment/sndlhc/emulsionData/2022/CERN/SND/RUN2/RUN2_W5_B2");
+const int brick = 43;
+TString path = TString("/eos/experiment/sndlhc/emulsionData/2022/CERN/SND/RUN2/RUN2_W4_B3");
 TString plotpath = TString("/eos/user/s/snd2cern/emu_reco_plots/RUN2");
 
 void thickness(int lastplate, int firstplate, bool rescan = false) {
