@@ -3,7 +3,7 @@ arguments = $(ClusterID) $(ProcId) $(PLATENUMBER)
 output = output/tag.$(ClusterId).$(PLATENUMBER).out
 error = error/tag.$(ClusterId).$(PLATENUMBER).err
 log = log/tag.$(ClusterId).log
-+JobFlavour = "testmatch"
++JobFlavour = "workday"
 request_memory = 12GB
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
