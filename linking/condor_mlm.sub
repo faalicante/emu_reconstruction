@@ -1,0 +1,13 @@
+executable = condor_mlm.sh
+arguments = $(ClusterID) $(ProcId) $(PLATENUMBER)
+output = output/mlm.$(ClusterId).$(PLATENUMBER).out
+error = error/mlm.$(ClusterId).$(PLATENUMBER).err
+log = log/mlm.$(ClusterId).log
++JobFlavour = "testmatch"
+request_memory = 24GB
+notification = Never
+requirements = (OpSysAndVer =?= "AlmaLinux9")
+requirements = Machine =!= LastRemoteHost
+on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0))
+max_retries             = 3
+queue PLATENUMBER from seq 1 57 |
