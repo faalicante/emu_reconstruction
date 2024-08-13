@@ -1,0 +1,13 @@
+executable = condor_ab0.sh
+arguments = $(ClusterID) $(ProcId) $(PLATENUMBER)
+output = output/ab0.$(ClusterId).$(PLATENUMBER).out
+error = error/ab0.$(ClusterId).$(PLATENUMBER).err
+log = log/ab0.$(ClusterId).log
++JobFlavour = "tomorrow"
+request_memory = 32GB
+notification = Never
+requirements = (OpSysAndVer =?= "AlmaLinux9")
+requirements = Machine =!= LastRemoteHost
+on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0))
+max_retries             = 3
+queue PLATENUMBER from seq 1 57 |
