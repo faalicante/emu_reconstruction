@@ -2,12 +2,12 @@
 // merge two functions
 // run and brick as input parameters
 
-const int run = 1;
-const int brick = 121;
+const int run = 2;
+const int brick = 22;
 
-TString path = TString(Form("/eos/experiment/sndlhc/emulsionData/2022/emureco_Napoli/RUN%i/b%06i", run, brick));
+TString path = TString(Form("/eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN%i/b%06i", run, brick));
 // Change where to save the plots
-TString plotpath = TString(Form("/eos/user/s/snd2na/emu_reco_plots/RUN%i/b%06d", run, brick));
+TString plotpath = TString(Form("/eos/user/s/snd2cern/emu_reco_plots/RUN%i/b%06d", run, brick));
 
 Double_t getMeanEntries(TH2F *h2){
 	TH1I tmp("tmp", "tmp", 100, h2->GetMinimum(), h2->GetMaximum());
@@ -26,7 +26,7 @@ void check_mos_side(int plate, int side) {
   TFile *f = TFile::Open(Form(path+"/p%03i/%i.%i.0.0.mos.root", plate, brick, plate), "READ");
   TTree *couples = (TTree*)f->Get("couples");
 
-  TCanvas *c = new TCanvas(Form("mos%d",side),Form("mosaic at side %d",side),1100,800);
+  TCanvas *c = new TCanvas(Form("mos%d_%d",plate,side),Form("mosaic plate %d at side %d",plate,side),1100,800);
   c->Divide(3,2);
   
   c->cd(1);
