@@ -16,3 +16,12 @@ cd /eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$RUN/$BRICKFOLDER
 
 echo "viewsideal $BRICKID.$PLATENUMBER.0.0"
 source viewsideal.sh $BRICKID $PLATENUMBER
+
+echo "mosalignbeam $BRICKID.$PLATENUMBER.0.0"
+source mosalignbeam.sh $BRICKID $PLATENUMBER
+
+echo "moslink $BRICKID.$PLATENUMBER.0.0"
+source moslink.sh $BRICKID $PLATENUMBER
+
+echo "moslink merge $BRICKID.$PLATENUMBER.0.0"
+source mosmerge.sh $BRICKID $PLATENUMBER
