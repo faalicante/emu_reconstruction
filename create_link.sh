@@ -7,8 +7,8 @@ BRICKID=$2
 NWALL=(${BRICKID: -2:1})
 NBRICK=(${BRICKID: -1:1})
 BRICKFOLDER="$(printf "b%0*d" 6 $BRICKID)"
-RAWDATAPATH=/eos/experiment/sndlhc/emulsionData/2022/ #put data path /RUN$RUN\_W$NWALL\_B$NBRICK 
-RECODATAPATH=/eos/experiment/sndlhc/emulsionData/2022/emureco_ # put reco path /RUN$RUN/$BRICKFOLDER
+RAWDATAPATH=/eos/experiment/sndlhc/emulsionData/2022/Napoli/SND/mic2/RUN$RUN\_W$NWALL\_B$NBRICK 
+RECODATAPATH=/eos/experiment/sndlhc/emulsionData/2022/emureco_Napoli/RUN$RUN/$BRICKFOLDER
 
 for iplate in $(seq $4 $3)
   do
