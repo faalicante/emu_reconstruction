@@ -1,0 +1,16 @@
+viewdist.env:                            viewdist.rootrc
+viewdist.EdbDebugLevel:                  1
+viewdist.DumpGr:                         1
+viewdist.NClMin:                         1000
+viewdist.R2CenterMax:                    15
+viewdist.Rmax:                           1.
+viewdist.NXpix:                          2336
+viewdist.NYpix:                          1728
+viewdist.Xpix:                           0.3* #put pixel2mu size
+viewdist.Ypix:                           0.3* #put pixel2mu size
+viewdist.MatrixStepX:                    10.
+viewdist.MatrixStepY:                    10.
+viewdist.DirX:                            0
+viewdist.DirY:                            0
+viewdist.ClusterAreaLimits:              4 22
+viewdist.ClusterVolumeLimits:            0 90000000
