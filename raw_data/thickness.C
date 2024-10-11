@@ -8,14 +8,14 @@ float xmin=0, ymin=0;
 //int xb=202,yb=182;
 float xview = 770., yview=565.;
 //float xview = 870., yview=635.; //view step, check gstep x and y
-int xb=270, yb=315; //number of bins around x and y
+int xb=270, yb=320; //number of bins around x and y
 HXY hxy={xb,yb,xmin,xmin+xview*xb,ymin,ymin+yb*yview};
 
 void draw_diff6();
 TH1F *Spectrum(TH2D &h2, const char *name);
 
-const int brick = 43;
-TString path = TString("/eos/experiment/sndlhc/emulsionData/2022/CERN/SND/RUN2/RUN2_W4_B3");
+const int brick = 11;
+TString path = TString("/eos/experiment/sndlhc/emulsionData/2022/CERN/SND/RUN2/RUN2_W1_B1");
 TString plotpath = TString("/eos/user/s/snd2cern/emu_reco_plots/RUN2");
 
 void thickness(int lastplate, int firstplate, bool rescan = false) {
