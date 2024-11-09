@@ -1,0 +1,13 @@
+executable = condor_align_3.sh
+arguments = $(ClusterID) $(ProcId) $(CELL)
+output = output/al.$(ClusterId).$(CELL).out
+error = error/al.$(ClusterId).$(CELL).err
+log = log/al.$(ClusterId).log
++JobFlavour = "testmatch"
+request_memory = 12GB
+notification = Never
+requirements = (OpSysAndVer =?= "AlmaLinux9")
+requirements = Machine =!= LastRemoteHost
+on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0))
+max_retries             = 3
+queue

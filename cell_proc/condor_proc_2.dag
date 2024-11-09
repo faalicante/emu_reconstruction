@@ -1,0 +1,10 @@
+JOB A condor_make.sub
+JOB B condor_proc.sub
+JOB C condor_align2.sub
+
+VARS A CELL="220"
+VARS B CELL="220"
+VARS C CELL="220"
+
+PARENT A CHILD B
+PARENT B CHILD C
