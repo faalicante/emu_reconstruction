@@ -1,3 +1,3 @@
 BRICKID=$1
-PLATENUMBER=$2
-emalign -A=$BRICKID.$((PLATENUMBER+1)).0.0 -B=$BRICKID.$((PLATENUMBER)).0.0 -new -v=2
+makescanset -set=$BRICKID.0.0.0 -dz=-1350 -from_plate=57 -to_plate=1 -dzbase=195
+emalign -set=$BRICKID.0.0.0 -new -v=2

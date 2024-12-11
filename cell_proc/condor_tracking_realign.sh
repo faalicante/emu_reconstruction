@@ -4,8 +4,9 @@ RUN= #put run number
 BRICKID= #put brick id
 BRICKFOLDER="$(printf "b%0*d" 6 $BRICKID)"
 CELL=$3
-CELLFOLDER=cell_$xcell_$ycell
-
+xcell=$(((CELL % 18 + 1) * 10))
+ycell=$(((CELL / 18 + 1) * 10))
+CELLFOLDER=cell_${xcell}_${ycell}
 
 echo "Set up SND environment"
 SNDBUILD_DIR=/afs/cern.ch/work/s/snd2na/public/SNDBUILD/sw

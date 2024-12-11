@@ -1,10 +1,10 @@
 BRICKFOLDER=$1
 CELL=$2
-xcell=$((CELL % 18 + 1))
-ycell=$((CELL / 18 + 1))
-xpos=$((xcell * 10000))
-ypos=$((ycell * 10000))
-folder=cell_$xcell_$ycell
+xcell=$(((CELL % 18 + 1) * 10))
+ycell=$(((CELL / 18 + 1) * 10))
+xpos=$((xcell * 1000))
+ypos=$((ycell * 1000))
+folder=cell_${xcell}_${ycell}
 
 if [ ! -d "$folder" ]; then
   echo "create new folder $folder"
@@ -14,5 +14,6 @@ if [ ! -d "$folder" ]; then
   sed -i "s/XPOS/$xpos/;s/YPOS/$ypos/" track_realign.rootrc
   sed -i "s/XPOS/$xpos/;s/YPOS/$ypos/" track_unbend.rootrc
 else
-  echo "$folder already exist - do nothing!"
+  echo "$folder already exist"
+  cd cells/$folder/$BRICKFOLDER
 fi

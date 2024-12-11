@@ -1,13 +1,13 @@
 executable = condor_align_2.sh
-arguments = $(ClusterID) $(ProcId) $(CELL)
+arguments = $(ClusterID) $(ProcId) $(PLATENUMBER) $(CELL)
 output = output/al.$(ClusterId).$(CELL).out
 error = error/al.$(ClusterId).$(CELL).err
 log = log/al.$(ClusterId).log
-+JobFlavour = "testmatch"
-request_memory = 12GB
++JobFlavour = "microcentury"
+request_memory = 4GB
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
 on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0))
 max_retries             = 3
-queue
+queue PLATENUMBER from seq 1 56 |

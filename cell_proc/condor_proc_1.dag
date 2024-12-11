@@ -1,18 +1,8 @@
+VARS ALL_NODES CELL="220"
+
 JOB A condor_make.sub
 JOB B condor_proc.sub
-#JOB C condor_align1.sub check al 2->1
-JOB D condor_align2.sub
+JOB C condor_align2.sub
 
-## check alignment (automatic?)
-#big peak small bkg
-
-JOB E condor_align3.sub
-JOB F condor_tracking_realign.sub
-JOB G condor_tracking_1.sub
-JOB H condor_unbend_1.sub
-JOB I condor_tracking_2.sub
-JOB J condor_unbend_2.sub
-JOB K condor_tracking_3.sub
-JOB L condor_unbend_3.sub
-
-#run1 b23
+PARENT A CHILD B
+PARENT B CHILD C

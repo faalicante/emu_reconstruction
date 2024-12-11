@@ -4,7 +4,9 @@ RUN= #put run number
 BRICKID= #put brick id
 BRICKFOLDER="$(printf "b%0*d" 6 $BRICKID)"
 CELL=$3
-CELLFOLDER=cell_$xcell_$ycell
+xcell=$(((CELL % 18 + 1) * 10))
+ycell=$(((CELL / 18 + 1) * 10))
+CELLFOLDER=cell_${xcell}_${ycell}
 
 echo "Set up SND environment"
 SNDBUILD_DIR=/afs/cern.ch/work/s/snd2na/public/SNDBUILD/sw
@@ -18,5 +20,5 @@ cd /eos/experiment/sndlhc/emulsionData/2022/emureco_Napoli/RUN$RUN/$BRICKFOLDER/
 
 echo "align_1 $BRICKID.$PLATENUMBER.0.0"
 cp align_1.rootrc align.rootrc
-source align.sh $BRICKID $PLATENUMBER
-cp $BRICKFOLDER.0.0.0.align.ps plot_first_align/$BRICKFOLDER.0.0.0.firstalign.ps
+source alignplate.sh $BRICKID $PLATENUMBER > out/$BRICKID.$PLATENUMBER.0.0.al1.txt
+# cp $BRICKFOLDER.0.0.0.align.ps plot_first_align/$BRICKFOLDER.0.0.0.firstalign.ps

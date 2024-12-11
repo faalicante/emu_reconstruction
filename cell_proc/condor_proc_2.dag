@@ -1,10 +1,22 @@
-JOB A condor_make.sub
-JOB B condor_proc.sub
-JOB C condor_align2.sub
+VARS ALL_NODES CELL="220"
 
-VARS A CELL="220"
-VARS B CELL="220"
-VARS C CELL="220"
+JOB A condor_align3.sub
+JOB B condor_tracking_realign.sub
+JOB C condor_tracking_1.sub
+JOB D condor_unbend_1.sub
+JOB E condor_tracking_2.sub
+JOB F condor_unbend_2.sub
+JOB G condor_tracking_3.sub
+JOB H condor_unbend_3.sub
+JOB I condor_tracking_4.sub
+JOB J condor_unbend_4.sub
 
 PARENT A CHILD B
 PARENT B CHILD C
+PARENT C CHILD D
+PARENT D CHILD E
+PARENT E CHILD F
+PARENT F CHILD G
+PARENT G CHILD H
+PARENT H CHILD I
+PARENT I CHILD J

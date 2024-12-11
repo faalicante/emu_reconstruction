@@ -18,5 +18,5 @@ source /afs/cern.ch/work/s/snd2na/public/fedra/setup_new.sh
 echo  "go into reconstruction folder "
 cd /eos/experiment/sndlhc/emulsionData/2022/emureco_Napoli/RUN$RUN/$BRICKFOLDER/cells/$CELLFOLDER/$BRICKFOLDER
 
-echo "unbend_3 $BRICKID.0.0.0"
-source unbend_3.sh $BRICKID
+echo "unbend_4 $BRICKID.0.0.0"
+source unbend_4.sh $BRICKID

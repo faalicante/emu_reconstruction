@@ -1,4 +1,4 @@
-executable = condor_tracking_realign.sh
+executable = condor_unbend_1.sh
 arguments = $(ClusterID) $(ProcId) $(CELL)
 output = output/trk.$(ClusterId).$(CELL).out
 error = error/trk.$(ClusterId).$(CELL).err
