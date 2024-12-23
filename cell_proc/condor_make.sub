@@ -1,9 +1,10 @@
 executable = condor_make.sh
 arguments = $(ClusterID) $(ProcId) $(CELL)
-output = output/proc.$(ClusterId).$(PLATENUMBER).out
-error = error/proc.$(ClusterId).$(PLATENUMBER).err
-log = log/proc.$(ClusterId).log
+output = output/make.$(ClusterId).out
+error = error/make.$(ClusterId).err
+log = log/make.$(ClusterId).log
 +JobFlavour = "espresso"
+request_memory = 1GB
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost

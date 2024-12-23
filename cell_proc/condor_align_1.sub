@@ -1,10 +1,10 @@
 executable = condor_align_1.sh
 arguments = $(ClusterID) $(ProcId) $(PLATENUMBER) $(CELL)
-output = output/al.$(ClusterId).$(CELL).out
-error = error/al.$(ClusterId).$(CELL).err
-log = log/al.$(ClusterId).log
-+JobFlavour = "microcentury"
-request_memory = 4GB
+output = output/al1.$(ClusterId).$(CELL).$(PLATENUMBER).out
+error = error/al1.$(ClusterId).$(CELL).$(PLATENUMBER).err
+log = log/al1.$(ClusterId).log
++JobFlavour = "espresso"
+request_memory = 1GB
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost

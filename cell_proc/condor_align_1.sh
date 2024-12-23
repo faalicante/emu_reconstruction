@@ -3,7 +3,8 @@
 RUN= #put run number
 BRICKID= #put brick id
 BRICKFOLDER="$(printf "b%0*d" 6 $BRICKID)"
-CELL=$3
+PLATENUMBER=$3
+CELL=$4
 xcell=$(((CELL % 18 + 1) * 10))
 ycell=$(((CELL / 18 + 1) * 10))
 CELLFOLDER=cell_${xcell}_${ycell}
