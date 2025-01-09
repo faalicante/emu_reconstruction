@@ -80,16 +80,18 @@ void cms1(int pl){
   float limX= 10;
   float limY= 5;
   TCut cut("s2.eW>50");
-
   gStyle->SetPalette(55);
   gStyle->SetOptStat("ne");
+  
+  TFile *f = TFile::Open(Form(path+"/p%03i/%i.%i.0.0.mos.root", pl, brick, pl), "READ");
+  TTree *couples = (TTree*)f->Get("couples");
   TH2F *h1 = (TH2F*)(gDirectory->Get(Form("hxy_%d_%d",pl,1)));
   TH2F *h2 = (TH2F*)(gDirectory->Get(Form("hxy_%d_%d",pl,2)));
 
   TCanvas *c = new TCanvas(Form("mos%d",pl),Form("mosaic at pl %d",pl),2000,1200);
   c->Divide(3,2);
-  c->cd(1);  h1->SetMaximum(300); h1->Draw("colz");
-  c->cd(4);  h2->SetMaximum(300); h2->Draw("colz");
+  c->cd(1);  h1->SetMaximum(getMeanEntries(h1)*2.8); h1->Draw("colz");
+  c->cd(4);  h2->SetMaximum(getMeanEntries(h2)*2.8); h2->Draw("colz");
 
   c->cd(2);
   couples->Draw("s2.eX-s1.eX:s1.eY:s1.eX>>hx1(260,0,200000,354,0,200000,100,-10,10)","s1.Side()==1" && cut,"prof colz");
@@ -113,13 +115,13 @@ void cms1(int pl){
   hy2->SetTitle( Form("dy side 2 with lim = %.1f",limY) );
   hy2->SetMinimum(-limY);  hy2->SetMaximum(limY);
 
-  if(gROOT->GetBatch()) c->SaveAs(Form(plotpath+"/mosaic/mos%i.2d.png",pl));
+  c->Print(Form(plotpath+"/mosaic/mos%i.2d.png",pl));
 }
 
 void check_mos(int lastplate, int firstplate) {
   for (int plate = firstplate; plate <= lastplate; plate++){
-    for(int side = 1; side <=2; side++){ 
-      check_mos_area(plate, side);
+    // for(int side = 1; side <=2; side++){ 
+      // check_mos_area(plate, side);
       // check_mos_side(plate, side);
     }
     cms1(plate);
