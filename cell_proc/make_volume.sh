@@ -13,6 +13,7 @@ if [ ! -d "$folder" ]; then
   sed -i "s/XPOS/$xpos/;s/YPOS/$ypos/" viewsideal.rootrc
   sed -i "s/XPOS/$xpos/;s/YPOS/$ypos/" track_realign.rootrc
   sed -i "s/XPOS/$xpos/;s/YPOS/$ypos/" track_unbend.rootrc
+  sed -i "s/XPOS/$xpos/;s/YPOS/$ypos/" track_dosh.rootrc
 else
   echo "$folder already exist"
   cd cells/$folder/$BRICKFOLDER
