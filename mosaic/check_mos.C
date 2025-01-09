@@ -123,7 +123,7 @@ void check_mos(int lastplate, int firstplate) {
     // for(int side = 1; side <=2; side++){ 
       // check_mos_area(plate, side);
       // check_mos_side(plate, side);
-    }
+    // }
     cms1(plate);
   }
 }
