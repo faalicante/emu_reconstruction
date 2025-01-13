@@ -1,13 +1,14 @@
 executable = condor_proc.sh
-arguments = $(ClusterID) $(ProcId) $(PLATENUMBER) $(CELL)
+arguments = $(ClusterID) $(PLATENUMBER) $(CELL)
 output = output/proc.$(ClusterId).$(PLATENUMBER).out
 error = error/proc.$(ClusterId).$(PLATENUMBER).err
 log = log/proc.$(ClusterId).log
-+JobFlavour = "microcentury"
-request_memory = 4GB
+should_transfer_files = NO
++JobFlavour = "espresso"
+request_memory = 2GB
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
 on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0))
 max_retries             = 2
-queue PLATENUMBER from seq 1 57 |
+queue PLATENUMBER, CELL from volumes.dat
