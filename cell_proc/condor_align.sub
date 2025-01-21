@@ -1,11 +1,11 @@
-executable = condor_tracking.sh
+executable = condor_align.sh
 arguments = $(ClusterID) $(CELL)
-output = output/trk.$(ClusterId).$(CELL).out
-error = error/trk.$(ClusterId).$(CELL).err
-log = log/trk.$(ClusterId).log
+output = output/al.$(ClusterId).$(CELL).out
+error = error/al.$(ClusterId).$(CELL).err
+log = log/al.$(ClusterId).log
 should_transfer_files = NO
-+JobFlavour = "tomorrow"
-request_memory = 16GB
++JobFlavour = "workday"
+request_memory = 8GB
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost

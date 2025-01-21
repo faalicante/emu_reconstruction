@@ -19,17 +19,18 @@ eval `alienv load -w $SNDBUILD_DIR --no-refresh sndsw/latest`
 source /afs/cern.ch/work/s/snd2na/public/fedra/setup_new.sh	
 
 cd $PWD
-MY_DIR=${CELL}_${PLATE}
+MY_DIR=${CELL}_${PLATENUMBER}/$BRICKFOLDER
 EXP_DIR=/eos/experiment/sndlhc/emulsionData/2022/emureco_Napoli/RUN1/b000123/cells/$CELLFOLDER/$BRICKFOLDER
-mkdir ./${MY_DIR}
+mkdir -p -v ./$MY_DIR/$PLATEFOLDER
 
-xrdcp -a ${EXP_DIR}/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./${MY_DIR}
-xrdcp ${EXP_DIR}/viewsideal.sh ./${MY_DIR}
-xrdcp ${EXP_DIR}/viewsideal.rootrc ./${MY_DIR}
-xrdcp ${EXP_DIR}/mosalignbeam.sh ./${MY_DIR}
-xrdcp ${EXP_DIR}/moslink.sh ./${MY_DIR}
-xrdcp ${EXP_DIR}/mosmerge.sh ./${MY_DIR}
-cd ${MY_DIR}
+ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEFOLDER
+xrdcp $EXP_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
+xrdcp $EXP_DIR/viewsideal.sh ./$MY_DIR
+xrdcp $EXP_DIR/viewsideal.rootrc ./$MY_DIR
+xrdcp $EXP_DIR/mosalignbeam.sh ./$MY_DIR
+xrdcp $EXP_DIR/moslink.sh ./$MY_DIR
+xrdcp $EXP_DIR/mosmerge.sh ./$MY_DIR
+cd $MY_DIR
 
 echo "viewsideal $BRICKID.$PLATENUMBER.0.0"
 source viewsideal.sh $BRICKID $PLATENUMBER
@@ -43,7 +44,7 @@ source moslink.sh $BRICKID $PLATENUMBER
 echo "moslink merge $BRICKID.$PLATENUMBER.0.0"
 source mosmerge.sh $BRICKID $PLATENUMBER
 
-xrdcp $BRICKID.$PLATENUMBER.0.0.mos.root ${EXP_DIR}/$PLATEFOLDER/
-xrdcp $BRICKID.$PLATENUMBER.0.0.*cp.root ${EXP_DIR}/$PLATEFOLDER/
+xrdcp -f $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $EXP_DIR/$PLATEFOLDER/
+xrdcp -f $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.*cp.root $EXP_DIR/$PLATEFOLDER/
 cd ../
-rm -rf ./${MY_DIR}
+rm -rf ./$MY_DIR

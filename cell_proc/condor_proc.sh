@@ -46,5 +46,6 @@ source mosmerge.sh $BRICKID $PLATENUMBER
 
 xrdcp -f $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $EXP_DIR/$PLATEFOLDER/
 xrdcp -f $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.*cp.root $EXP_DIR/$PLATEFOLDER/
+
 cd ../
 rm -rf ./$MY_DIR
