@@ -6,14 +6,15 @@ BRICKFOLDER="$(printf "b%0*d" 6 $BRICKID)"
 PLATENUMBER=$3
 
 echo "Set up SND environment"
-SNDBUILD_DIR= #put sndsw /sw path
+
+SNDBUILD_DIR=/afs/cern.ch/work/s/snd2na/public/SNDBUILD/sw
 source /cvmfs/sndlhc.cern.ch/SNDLHC-2023/Aug30/setUp.sh
 eval `alienv load -w $SNDBUILD_DIR --no-refresh sndsw/latest`
 echo "Loading FEDRA"
-source #put /fedra/setup.sh 	
+source /afs/cern.ch/work/s/snd2na/public/fedra/setup_new.sh	
 
 echo  "go into reconstruction folder "
-cd # put reconstruction fodler /RUN$RUN/$BRICKFOLDER
+cd /eos/experiment/sndlhc/emulsionData/2022/emureco_Napoli/RUN$RUN/$BRICKFOLDER
 
 echo "viewsideal $BRICKID.$PLATENUMBER.0.0"
 source viewsideal.sh $BRICKID $PLATENUMBER

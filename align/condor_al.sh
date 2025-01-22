@@ -15,5 +15,6 @@ source /afs/cern.ch/work/s/snd2na/public/fedra/setup_new.sh
 echo  "go into reconstruction folder "
 cd /eos/experiment/sndlhc/emulsionData/2022/emureco_Napoli/RUN$RUN/$BRICKFOLDER
 
-echo "moslink $BRICKID.$PLATENUMBER.0.0"
-source mosmerge.sh $BRICKID $PLATENUMBER
+echo "align $BRICKID.$PLATENUMBER.0.0"
+source align.sh $BRICKID $PLATENUMBER
+

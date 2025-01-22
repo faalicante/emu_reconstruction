@@ -1,3 +1,3 @@
 BRICKID=$1
 PLATENUMBER=$2
-mosalignbeam -id=$BRICKID.$PLATENUMBER.0.0 -v=1
+mosalignbeam -id=$BRICKID.$PLATENUMBER.0.0 -v=2 > out/ab0_$PLATENUMBER.txt

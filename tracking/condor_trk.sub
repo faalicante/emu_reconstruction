@@ -1,8 +1,8 @@
-executable = condor_mln.sh
+executable = condor_trk.sh
 arguments = $(ClusterID) $(ProcId) $(PLATENUMBER)
-output = output/vsa.$(ClusterId).$(PLATENUMBER).out
-error = error/vsa.$(ClusterId).$(PLATENUMBER).err
-log = log/vsa.$(ClusterId).log
+output = output/trk.$(ClusterId).$(PLATENUMBER).out
+error = error/trk.$(ClusterId).$(PLATENUMBER).err
+log = log/trk.$(ClusterId).log
 +JobFlavour = "testmatch"
 request_memory = 12GB
 notification = Never
@@ -10,4 +10,4 @@ requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
 on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0))
 max_retries             = 3
-queue PLATENUMBER from seq 1 57 |
+queue
