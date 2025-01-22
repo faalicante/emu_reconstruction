@@ -2,6 +2,7 @@ fedra.vsa.DoImageMatrixCorr:             1
 fedra.vsa.ImageMatrixCorrSide1:          /eos/experiment/sndlhc/emulsionData/2022/Napoli/CALIBRATIONS/mic2/diff_matrix_top_2021.txt
 fedra.vsa.ImageMatrixCorrSide2:          /eos/experiment/sndlhc/emulsionData/2022/Napoli/CALIBRATIONS/mic2/diff_matrix_bot_2021.txt
 
+
 fedra.vsa.offsetMax:                     10
 fedra.vsa.DZ:                            0
 fedra.vsa.DPHI:                          0

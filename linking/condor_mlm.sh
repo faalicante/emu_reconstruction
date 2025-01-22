@@ -17,4 +17,3 @@ cd /eos/experiment/sndlhc/emulsionData/2022/emureco_Napoli/RUN$RUN/$BRICKFOLDER
 
 echo "moslink $BRICKID.$PLATENUMBER.0.0"
 source mosmerge.sh $BRICKID $PLATENUMBER
-

@@ -6,6 +6,7 @@ BRICKFOLDER="$(printf "b%0*d" 6 $BRICKID)"
 PLATENUMBER=$3
 
 echo "Set up SND environment"
+
 SNDBUILD_DIR=/afs/cern.ch/work/s/snd2na/public/SNDBUILD/sw
 source /cvmfs/sndlhc.cern.ch/SNDLHC-2023/Aug30/setUp.sh
 eval `alienv load -w $SNDBUILD_DIR --no-refresh sndsw/latest`

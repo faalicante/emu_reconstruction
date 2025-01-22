@@ -28,5 +28,4 @@ Films scanned with this configuration:
 - RUN3 W3 B1 P51, 56
 - RUN2 W3 B2 P02, 52
 
-
 *last update: 22/07/24*
