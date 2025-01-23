@@ -1,8 +1,9 @@
 executable = condor_tag.sh
-arguments = $(ClusterID) $(ProcId) $(PLATENUMBER)
+arguments = $(ClusterID) $(PLATENUMBER)
 output = output/tag.$(ClusterId).$(PLATENUMBER).out
 error = error/tag.$(ClusterId).$(PLATENUMBER).err
 log = log/tag.$(ClusterId).log
+should_transfer_files = NO
 +JobFlavour = "testmatch"
 request_memory = 12GB
 notification = Never
