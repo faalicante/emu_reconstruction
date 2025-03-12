@@ -2,11 +2,11 @@
 
 export EOSSHIP=root://eospublic.cern.ch/
 
-RUN=$3
-BRICKID=$4
-BRICKFOLDER="$(printf "b%0*d" 6 $BRICKID)"
-PLATENUMBER=$2
-PLATEFOLDER="$(printf "p%0*d" 3 $PLATENUMBER)"
+RUN=$2
+BRICKID=$3
+BRICKFOLDER=$4
+PLATENUMBER=$5
+PLATEFOLDER=$6
 
 echo "Set up SND environment"
 SNDBUILD_DIR= #path of your environments /SNDBUILD/sw

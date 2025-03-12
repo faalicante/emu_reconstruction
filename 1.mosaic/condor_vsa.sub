@@ -1,14 +1,14 @@
 executable = condor_vsa.sh
-arguments = $(ClusterID) $(PLATENUMBER) $(RUN) $(BRICK)
-BRICKFOLDER=b$(format "%06" $(BRICK))
-PLATEFOLDER=p$(format "%03" $(PLATENUMBER))
+BRICKFOLDER = $INT(BRICK,%06d)
+PLATEFOLDER = $INT(PLATENUMBER,%03d)
+arguments = $(ClusterID) $(RUN) $(BRICK) $(BRICKFOLDER) $(PLATENUMBER) $(PLATEFOLDER) 
 output = output/vsa.$(ClusterId).$(PLATENUMBER).out
 error = error/vsa.$(ClusterId).$(PLATENUMBER).err
 log = log/vsa.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
-output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$RUN/$BRICKFOLDER/$PLATEFOLDER/
-transfer_output_files=$BRICK.$PLATENUMBER.0.0.mos.root
+output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/b$(BRICKFOLDER)/p$(PLATEFOLDER)/
+transfer_output_files=$(BRICK).$(PLATENUMBER).0.0.mos.root
 should_transfer_files = if_needed
 
 +JobFlavour = "tomorrow"
