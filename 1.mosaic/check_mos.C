@@ -2,12 +2,14 @@
 // merge two functions
 // run and brick as input parameters
 
-const int run = 1;
-const int brick = 121;
+const int run = //insert run;
+const int brick = //insert brick;
 
-TString path = TString(Form("/eos/experiment/sndlhc/emulsionData/2022/emureco_Napoli/RUN%i/b%06i", run, brick));
+// TString path = TString(Form("/eos/experiment/sndlhc/emulsionData/2022/emureco_Napoli/RUN%i/b%06i", run, brick));
+TString path = TString(Form("/eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN%i/b%06i", run, brick));
 // Change where to save the plots
-TString plotpath = TString(Form("/eos/user/s/snd2na/emu_reco_plots/RUN%i/b%06d", run, brick));
+// TString plotpath = TString(Form("/eos/user/s/snd2na/emu_reco_plots/RUN%i/b%06d", run, brick));
+TString plotpath = TString(Form("/eos/user/s/snd2cern/emu_reco_plots/RUN%i/b%06d", run, brick));
 
 Double_t getMeanEntries(TH2F *h2){
 	TH1I tmp("tmp", "tmp", 100, h2->GetMinimum(), h2->GetMaximum());
@@ -78,7 +80,7 @@ void check_mos_area(int plate, int side) {
 
 void cms1(int pl){
   float limX= 10;
-  float limY= 5;
+  float limY= 10;
   TCut cut("s2.eW>50");
   gStyle->SetPalette(55);
   gStyle->SetOptStat("ne");

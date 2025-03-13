@@ -23,11 +23,11 @@ cd $MAIN_DIR
 MY_DIR=$PLATENUMBER/$BRICKFOLDER
 #EXP_DIR=/eos/experiment/sndlhc/emulsionData/2022/emureco_Napoli/RUN$RUN/$BRICKFOLDER
 EXP_DIR=/eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$RUN/$BRICKFOLDER
-mkdir -p -v ./$MY_DIR/out
 mkdir -p -v ./$MY_DIR/$PLATEFOLDER
 ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEFOLDER
 ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
 ln -s $EXP_DIR/viewsideal.sh ./$MY_DIR
+ln -s $EXP_DIR/viewsideal.rootrc ./$MY_DIR
 
 cd $MY_DIR
 source viewsideal.sh $BRICKID $PLATENUMBER
