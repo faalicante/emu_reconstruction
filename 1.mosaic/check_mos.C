@@ -2,8 +2,8 @@
 // merge two functions
 // run and brick as input parameters
 
-const int run = //insert run;
-const int brick = //insert brick;
+const int run = ; //insert run
+const int brick = ; //insert brick
 
 // TString path = TString(Form("/eos/experiment/sndlhc/emulsionData/2022/emureco_Napoli/RUN%i/b%06i", run, brick));
 TString path = TString(Form("/eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN%i/b%06i", run, brick));

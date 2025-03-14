@@ -1,7 +1,9 @@
 executable = condor_make.sh
-arguments = $(ClusterID) $(ProcId) $(CELL)
-output = output/make.$(ClusterId).out
-error = error/make.$(ClusterId).err
+RUN = 
+BRICK = 
+arguments = $(ClusterID) $(RUN) $(BRICK) $(CELL)
+output = output/make.$(ClusterId).$(CELL).out
+error = error/make.$(ClusterId).$(CELL).err
 log = log/make.$(ClusterId).log
 +JobFlavour = "espresso"
 request_memory = 1GB
@@ -9,5 +11,5 @@ notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
 on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0))
-max_retries             = 2
-queue
+max_retries             = 3
+queue CELL from seq 0 323 |
