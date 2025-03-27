@@ -1,4 +1,4 @@
-executable = condor_ab0.sh
+executable = condor_tag.sh
 RUN = 
 BRICK = 
 BRICKFOLDER = b$INT(BRICK,%06d)
