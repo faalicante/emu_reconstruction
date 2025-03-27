@@ -5,7 +5,6 @@ script_dir=/afs/cern.ch/work/f/falicant/public/emu_reconstruction
 target_dir=$BRICKFOLDER
 
 mkdir -p $target_dir/
-mkdir -p $target_dir/out
 mkdir -p $target_dir/AFF
 
 cp $script_dir/create_link.sh $target_dir

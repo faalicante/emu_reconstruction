@@ -1,19 +1,19 @@
-fedra.vsa.DoImageCorr:                   1
+fedra.vsa.DoImageCorr:                   0
 fedra.vsa.ImageCorrSide1:                1  0  0  1 0 0
 fedra.vsa.ImageCorrSide2:                1  0  0  1 0 0
 
-fedra.vsa.DoImageMatrixCorr:             1
+fedra.vsa.DoImageMatrixCorr:             0
 fedra.vsa.ImageMatrixCorrSide1:          #matrix top
 fedra.vsa.ImageMatrixCorrSide2:          #matrix bot
 
-fedra.vsa.offsetMax:                     10
+fedra.vsa.offsetMax:                     20
 fedra.vsa.DZ:                            0
 fedra.vsa.DPHI:                          0
 fedra.vsa.Xfrag:                         10000
 fedra.vsa.Yfrag:                         10000
 fedra.vsa.AFID:                          1
-fedra.vsa.MinPeak:                       25
-#fedra.vsa.HeaderCut:                     abs(eXview-100000)<6000&&abs(eYview-100000)<6000
+fedra.vsa.MinPeak:                       20
+#fedra.vsa.HeaderCut:                     abs(eXview-90000)<6000&&abs(eYview-90000)<6000
 fedra.vsa.sigmaR:                        0.5
 fedra.vsa.sigmaT:                        0.005
 fedra.vsa.ICUT:                          -1     -500. 500.   -500.   500.    -1.   1.      -1.   1.       8.  50.
