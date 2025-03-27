@@ -1,0 +1,23 @@
+executable = condor_ab0.sh
+RUN = 
+BRICK = 
+BRICKFOLDER = b$INT(BRICK,%06d)
+PLATEFOLDER = p$INT(PLATENUMBER,%03d)
+arguments = $(ClusterID) $(RUN) $(BRICK) $(BRICKFOLDER) $(PLATENUMBER) $(PLATEFOLDER) 
+output = output/ab0.$(ClusterId).$(PLATENUMBER).out
+error = error/ab0.$(ClusterId).$(PLATENUMBER).err
+log = log/ab0.$(ClusterId).log
+
+transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
+output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/$(PLATEFOLDER)/
+transfer_output_files=$(BRICK).$(PLATENUMBER).0.0.mos.root,$(BRICK).$(PLATENUMBER).0.0.tag.root
+should_transfer_files = if_needed
+
++JobFlavour = "testmatch"
+request_memory = 32GB
+notification = Never
+requirements = (OpSysAndVer =?= "AlmaLinux9")
+requirements = Machine =!= LastRemoteHost
+on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0))
+max_retries             = 2
+queue PLATENUMBER from seq 1 57 |

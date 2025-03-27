@@ -20,6 +20,3 @@ sed -i "s/XPOS/$xpos/;s/YPOS/$ypos/" viewsideal.rootrc
 sed -i "s/XPOS/$xpos/;s/YPOS/$ypos/" track_realign.rootrc
 sed -i "s/XPOS/$xpos/;s/YPOS/$ypos/" track_unbend.rootrc
 sed -i "s/XPOS/$xpos/;s/YPOS/$ypos/" track_dosh.rootrc
-
-echo "makescanset $BRICKID.0.0.0"
-source scanset.sh $BRICKID
