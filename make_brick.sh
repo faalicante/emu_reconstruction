@@ -12,8 +12,8 @@ cp $script_dir/create_link.sh $target_dir
 cp $script_dir/scanset.sh $target_dir
 cp $script_dir/1.mosaic/viewsideal.rootrc $target_dir
 cp $script_dir/1.mosaic/viewsideal.sh $target_dir
-cp $script_dir/2.beam/mosalignbeam.sh $target_dir
-cp $script_dir/3.tag/mostag.sh $target_dir
-cp $script_dir/3.tag/tagtra.sh $target_dir
-cp $script_dir/3.tag/tagalign.sh $target_dir
+cp $script_dir/2.tag/mosalignbeam.sh $target_dir
+cp $script_dir/2.tag/mostag.sh $target_dir
+cp $script_dir/2.tag/tagalignplate.sh $target_dir
+cp $script_dir/2.tag/tagalign.sh $target_dir
 cd $target_dir

@@ -4,9 +4,9 @@ BRICK =
 BRICKFOLDER = b$INT(BRICK,%06d)
 PLATEFOLDER = p$INT(PLATENUMBER,%03d)
 arguments = $(ClusterID) $(RUN) $(BRICK) $(BRICKFOLDER) $(PLATENUMBER) $(PLATEFOLDER) 
-output = output/ab0.$(ClusterId).$(PLATENUMBER).out
-error = error/ab0.$(ClusterId).$(PLATENUMBER).err
-log = log/ab0.$(ClusterId).log
+output = output/tag.$(ClusterId).$(PLATENUMBER).out
+error = error/tag.$(ClusterId).$(PLATENUMBER).err
+log = log/tag.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
 transfer_input_files=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/$(PLATEFOLDER)/$(BRICK).$(PLATENUMBER).0.0.mos.root
