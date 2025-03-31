@@ -25,9 +25,11 @@ export XROOTD_VMP=eospublic.cern.ch:/eos=/eos
 MAIN_DIR=$PWD
 cd $MAIN_DIR
 MY_DIR=${CELL}_${PLATENUMBER}/$BRICKFOLDER
-EXP_DIR=/eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$RUN/$BRICKFOLDER
+EXP_DIR=/eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$RUN/$BRICKFOLDER/cells/$CELLFOLDER/$BRICKFOLDER
 mkdir -p -v ./$MY_DIR/$PLATEFOLDER
 
+ln -s /eos/experiment/sndlhc/emulsionData/2022/CERN/CALIBRATIONS/mic4/diff_matrix_top_Dec23.txt ./$MY_DIR
+ln -s /eos/experiment/sndlhc/emulsionData/2022/CERN/CALIBRATIONS/mic4/diff_matrix_bot_Dec23.txt ./$MY_DIR
 ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEFOLDER
 ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
 ln -s $EXP_DIR/viewsideal.sh ./$MY_DIR
@@ -35,10 +37,6 @@ ln -s $EXP_DIR/viewsideal.rootrc ./$MY_DIR
 ln -s $EXP_DIR/mosalignbeam.sh ./$MY_DIR
 ln -s $EXP_DIR/moslink.sh ./$MY_DIR
 ln -s $EXP_DIR/mosmerge.sh ./$MY_DIR
-ln -s $EXP_DIR/AFF ./$MY_DIR
-ln -s $EXP_DIR/scanset.sh ./$MY_DIR
-ln -s $EXP_DIR/alignplate.sh ./$MY_DIR
-ln -s $EXP_DIR/align*.rootrc ./$MY_DIR
 
 cd $MY_DIR
 
@@ -54,18 +52,7 @@ source moslink.sh $BRICKID $PLATENUMBER
 echo "moslink merge $BRICKID.$PLATENUMBER.0.0"
 source mosmerge.sh $BRICKID $PLATENUMBER
 
-if [ "$PLATENUMBER" -lt 57 ]; then
-    source scanset.sh $BRICKID
-    cp align_2.rootrc align.rootrc
-    source alignplate.sh $BRICKID $PLATENUMBER
 
-    source scanset.sh $BRICKID
-    cp align_3.rootrc align.rootrc
-    source alignplate.sh $BRICKID $PLATENUMBER
-
-    mv AFF/$BRICKID.$((PLATENUMBER+1)).0.0_$BRICKID.$PLATENUMBER.0.0.al.root $MAIN_DIR/$BRICKID.$((PLATENUMBER+1)).0.0_$BRICKID.$PLATENUMBER.$xcell.$ycell.al.root
-    mv AFF/$BRICKID.$((PLATENUMBER+1)).0.0_$BRICKID.$PLATENUMBER.0.0.aff.par $MAIN_DIR/$BRICKID.$((PLATENUMBER+1)).0.0_$BRICKID.$PLATENUMBER.$xcell.$ycell.aff.par
-fi
-
-mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/BRICKID.$PLATENUMBER.$xcell.$ycell.mos.root
-mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root $MAIN_DIR//$BRICKID.$PLATENUMBER.$xcell.$ycell.cp.root
+mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.mos.root
+mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.cp.root
+mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.0.cp.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.0.cp.root

@@ -1,3 +1,3 @@
 BRICKID=$1
 PLATENUMBER=$2
-moslink -id=$BRICKID.$PLATENUMBER.0.0 -v=2 > out/mln_$PLATENUMBER.txt
+moslink -id=$BRICKID.$PLATENUMBER.0.0 -v=1
