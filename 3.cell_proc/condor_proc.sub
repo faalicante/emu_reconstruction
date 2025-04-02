@@ -13,7 +13,7 @@ log = log/vsa.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
 output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/$(PLATEFOLDER)/
-transfer_output_files=$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).mos.root, $(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).0.cp.root, $(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).cp.root
+transfer_output_files=$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).mos.root, $(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).cp.root
 should_transfer_files = if_needed
 
 +JobFlavour = "microcentury"
