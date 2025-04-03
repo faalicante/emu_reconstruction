@@ -6,17 +6,17 @@ template_dir=cells/cell_template/$BRICKFOLDER
 
 mkdir -p $template_dir
 
-cp $script_dir/3.cell_proc/make_volume.sh cells/
 cp -r AFF $template_dir
 cp viewsideal*.rootrc $template_dir
 cp $script_dir/scanset.sh $template_dir
 cp $script_dir/1.mosaic/viewsideal.sh $template_dir
 cp $script_dir/2.tag/mosalignbeam.sh $template_dir
 cp $script_dir/linking/mos*.sh $template_dir
-cp $script_dir/align/alignplate.sh $template_dir
-cp $script_dir/align/align_*.rootrc $template_dir
-cp $script_dir/tracking/tracking_all.sh $template_dir
-cp $script_dir/tracking/*.rootrc $template_dir
+cp $script_dir/3.cell_proc/make_volume.sh cells/
+cp $script_dir/4.align/alignplate.sh $template_dir
+cp $script_dir/4.align/align_*.rootrc $template_dir
+cp $script_dir/5.tracking/tracking_all.sh $template_dir
+cp $script_dir/5.tracking/*.rootrc $template_dir
 for PLATENUMBER in $(seq 1 57);do
     PLATEFOLDER="$(printf "p%0*d" 3 $PLATENUMBER)"
     mkdir $template_dir/$PLATEFOLDER
