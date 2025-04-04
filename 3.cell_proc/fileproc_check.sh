@@ -9,9 +9,11 @@ for CELL in $(seq 0 323); do
     folder=cell_${xcell}0_${ycell}0/$BRICKFOLDER
     for p in $(seq 1 57); do
         plate="$(printf "p%0*d" 3 $p)"
+        file_mos=$folder/$plate/$BRICKID.$p.$xcell.$ycell.mos.root
         file_cp=$folder/$plate/$BRICKID.$p.$xcell.$ycell.cp.root
         file_cp_frag=$folder/$plate/$BRICKID.$p.$xcell.$ycell.0.cp.root
         if [ -f "$file_cp" ]; then
+            mv $file_mos $folder/$plate/$BRICKID.$p.0.0.mos.root
             mv $file_cp $folder/$plate/$BRICKID.$p.0.0.cp.root
             rm $file_cp_frag
         else
