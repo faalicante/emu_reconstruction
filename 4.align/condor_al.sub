@@ -3,7 +3,7 @@ RUN =
 BRICK = 
 BRICKFOLDER = b$INT(BRICK,%06d)
 PLATEFOLDER = p$INT(PLATENUMBER,%03d)
-PLATENEXT = $((PLATENUMBER)+1)
+PLATENEXT = ($(PLATENUMBER)+1)
 X = ($(CELL) % 18 + 1)
 Y = ($(CELL) / 18 + 1)
 CELLFOLDER = cell_$INT(X)0_$INT(Y)0
@@ -14,7 +14,7 @@ log = log/al.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
 output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/$(PLATEFOLDER)/
-transfer_output_files=$(BRICK).$(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).al.root, $(BRICK).$(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).aff.par
+transfer_output_files=$(BRICK).$INT(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).al.root, $(BRICK).$INT(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).aff.par
 should_transfer_files = if_needed
 
 +JobFlavour = "microcentury"
