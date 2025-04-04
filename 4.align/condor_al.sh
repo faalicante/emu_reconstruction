@@ -12,6 +12,8 @@ PLATEFOLDER=$8
 xcell=$(((CELL % 18 + 1) * 10))
 ycell=$(((CELL / 18 + 1) * 10))
 PLATENEXT=$((PLATENUMBER+1))
+NEXTFOLDER="$(printf "p%0*d" 3 $PLATENEXT)"
+
 
 echo "Set up SND environment"
 SNDBUILD_DIR=/afs/cern.ch/user/s/snd2cern/public/SNDBUILD/sw
@@ -28,11 +30,11 @@ cd $MAIN_DIR
 MY_DIR=${CELL}_${PLATENUMBER}/$BRICKFOLDER
 EXP_DIR=/eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$RUN/$BRICKFOLDER/cells/$CELLFOLDER/$BRICKFOLDER
 mkdir -p -v ./$MY_DIR/$PLATEFOLDER
-mkdir -p -v ./$MY_DIR/$PLATENEXT
+mkdir -p -v ./$MY_DIR/$NEXTFOLDER
 
 ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEFOLDER
 ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root ./$MY_DIR/$PLATEFOLDER
-ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENEXT.0.0.cp.root ./$MY_DIR/$PLATENEXT
+ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENEXT.0.0.cp.root ./$MY_DIR/$NEXTFOLDER
 ln -s $EXP_DIR/AFF ./$MY_DIR
 ln -s $EXP_DIR/scanset.sh ./$MY_DIR
 ln -s $EXP_DIR/alignplate.sh ./$MY_DIR
