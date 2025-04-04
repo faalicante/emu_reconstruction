@@ -9,8 +9,8 @@ CELL=$5
 CELLFOLDER=$6
 PLATENUMBER=$7
 PLATEFOLDER=$8
-xcell=$(((CELL % 18 + 1) * 10))
-ycell=$(((CELL / 18 + 1) * 10))
+xcell=$((CELL % 18 + 1))
+ycell=$((CELL / 18 + 1))
 
 echo "Set up SND environment"
 SNDBUILD_DIR=/afs/cern.ch/user/s/snd2cern/public/SNDBUILD/sw
