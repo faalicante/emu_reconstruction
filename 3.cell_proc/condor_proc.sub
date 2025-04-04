@@ -7,9 +7,9 @@ X = ($(CELL) % 18 + 1)
 Y = ($(CELL) / 18 + 1)
 CELLFOLDER = cell_$INT(X)0_$INT(Y)0
 arguments = $(ClusterID) $(RUN) $(BRICK) $(BRICKFOLDER) $(CELL) $(CELLFOLDER) $(PLATENUMBER) $(PLATEFOLDER)
-output = output/vsa.$(ClusterId).$(CELL).$(PLATENUMBER).out
-error = error/vsa.$(ClusterId).$(CELL).$(PLATENUMBER).err
-log = log/vsa.$(ClusterId).log
+output = output/proc.$(ClusterId).$(CELL).$(PLATENUMBER).out
+error = error/proc.$(ClusterId).$(CELL).$(PLATENUMBER).err
+log = log/proc.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
 output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/$(PLATEFOLDER)/
@@ -18,6 +18,9 @@ should_transfer_files = if_needed
 
 +JobFlavour = "longlunch"
 request_memory = 3GB
+request_cpus = 1
++HEPSPEC_PER_CORE = 10
+requirements = TARGET.HEPSPEC_PER_CORE =!= UNDEFINED
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
