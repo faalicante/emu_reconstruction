@@ -30,7 +30,7 @@ EXP_DIR=/eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$RUN/$BRICKFOLD
 mkdir -p -v ./$MY_DIR/$PLATEFOLDER
 
 ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEFOLDER
-ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
+ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root ./$MY_DIR/$PLATEFOLDER
 ln -s $EXP_DIR/AFF ./$MY_DIR
 ln -s $EXP_DIR/scanset.sh ./$MY_DIR
 ln -s $EXP_DIR/alignplate.sh ./$MY_DIR

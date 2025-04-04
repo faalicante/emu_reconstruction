@@ -3,7 +3,7 @@ RUN =
 BRICK = 
 BRICKFOLDER = b$INT(BRICK,%06d)
 PLATEFOLDER = p$INT(PLATENUMBER,%03d)
-PLATENEXT = $INT(PLATENUMBER+1)
+PLATENEXT = $((PLATENUMBER)+1)
 X = ($(CELL) % 18 + 1)
 Y = ($(CELL) / 18 + 1)
 CELLFOLDER = cell_$INT(X)0_$INT(Y)0
@@ -22,6 +22,6 @@ request_memory = 3GB
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
-on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0))
+on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0) && fileExists("$(BRICK).$(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).aff.par"))
 max_retries             = 3
-queue PLATENUMBER, CELL from volumes.dat
+queue PLATENUMBER, CELL from volumes_al.dat
