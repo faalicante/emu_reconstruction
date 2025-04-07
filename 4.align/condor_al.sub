@@ -2,27 +2,27 @@ executable = condor_al.sh
 RUN = 
 BRICK = 
 BRICKFOLDER = b$INT(BRICK,%06d)
-PLATEFOLDER = p$INT(PLATENUMBER,%03d)
-PLATENEXT = ($(PLATENUMBER)+1)
 X = ($(CELL) % 18 + 1)
 Y = ($(CELL) / 18 + 1)
 CELLFOLDER = cell_$INT(X)0_$INT(Y)0
-arguments = $(ClusterID) $(RUN) $(BRICK) $(BRICKFOLDER) $(CELL) $(CELLFOLDER) $(PLATENUMBER) $(PLATEFOLDER)
-output = output/al.$(ClusterId).$(CELL).$(PLATENUMBER).out
-error = error/al.$(ClusterId).$(CELL).$(PLATENUMBER).err
+arguments = $(ClusterID) $(RUN) $(BRICK) $(BRICKFOLDER) $(CELL) $(CELLFOLDER)
+output = output/al.$(ClusterId).$(CELL).out
+error = error/al.$(ClusterId).$(CELL).err
 log = log/al.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
-transfer_input_files=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/AFF/$(BRICK).$INT(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).0.0.aff.par
-output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/$(PLATEFOLDER)/
-transfer_output_files=$(BRICK).$INT(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).al.root, $(BRICK).$INT(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).aff.par
-should_transfer_files = if_needed
+transfer_input_files=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/AFF.tar.gz
+output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/
+transfer_output_files=AFF.$(CELL).tar.gz
+should_transfer_files = yes
 
-+JobFlavour = "microcentury"
-request_memory = 3GB
++JobFlavour = "workday"
+request_memory = 8GB
++HEPSPEC_PER_CORE = 10
+requirements = TARGET.HEPSPEC_PER_CORE =!= UNDEFINED
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
-on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0) && fileExists("$(BRICK).$(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).aff.par"))
+on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0) && fileExists("AFF.$(CELL).tar.gz"))
 max_retries             = 3
-queue PLATENUMBER, CELL from volumes_al.dat
+queue CELL from seq 0 323 |
