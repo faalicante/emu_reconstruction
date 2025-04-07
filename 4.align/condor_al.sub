@@ -13,6 +13,7 @@ error = error/al.$(ClusterId).$(CELL).$(PLATENUMBER).err
 log = log/al.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
+transfer_input_files=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/AFF/$(BRICK).$INT(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).0.0.aff.par
 output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/$(PLATEFOLDER)/
 transfer_output_files=$(BRICK).$INT(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).al.root, $(BRICK).$INT(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).aff.par
 should_transfer_files = if_needed

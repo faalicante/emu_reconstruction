@@ -25,14 +25,12 @@ EXP_DIR=/eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$RUN/$BRICKFOLD
 mkdir -p -v ./$MY_DIR/$PLATEFOLDER
 
 ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEFOLDER
-ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root ./$MY_DIR/$PLATEFOLDER
 ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
 ln -s $EXP_DIR/mosalignbeam.sh ./$MY_DIR
 ln -s $EXP_DIR/mostag.sh ./$MY_DIR
 
 cd $MY_DIR
-source mosalignbeam.sh $BRICKID $PLATENUMBER
-source mostag.sh $BRICKID $PLATENUMBER
 
-mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/
+mv $MAIN_DIR/$BRICKID.$PLATENUMBER.0.0.mos.root  $PLATEFOLDER/
+source mostag.sh $BRICKID $PLATENUMBER
 mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.tag.root $MAIN_DIR/

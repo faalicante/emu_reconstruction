@@ -1,4 +1,9 @@
+#include <math.h>
+
+float kRun=1;    // 1 for run1;
 const int brick = ; //insert brick
+float stepX=770, stepY=565;
+// float stepX=870, stepY=635;
 
 TString path = "";
 TString plotpath = TString("report/mos");
@@ -113,37 +118,6 @@ void cms1(int pl){
 }
 
 
-float stepX=770, stepY=565;
-// float stepX=870, stepY=635;
-
-TProfile2D *zoomH2(TH2 *h2a, TH2 *h2b, float xbin, float ybin)
-{
-  double xmin1,xmax1,ymin1,ymax1;
-  double xmin2,xmax2,ymin2,ymax2;
-  zoomH2(h2a, xmin1,xmax1,ymin1,ymax1);
-  zoomH2(h2b, xmin2,xmax2,ymin2,ymax2);
-
-  double xmin = Min(xmin1,xmin2);
-  double ymin = Min(ymin1,ymin2);
-  double xmax = Max(xmax1,xmax2);
-  double ymax = Max(ymax1,ymax2);
-// Set new axis limits
-  h2a->GetXaxis()->SetRangeUser(xmin, xmax);
-  h2a->GetYaxis()->SetRangeUser(ymin, ymax);
-  h2b->GetXaxis()->SetRangeUser(xmin, xmax);
-  h2b->GetYaxis()->SetRangeUser(ymin, ymax);
-
-  int nx=(int)((xmax-xmin)/xbin);
-  int ny=(int)((ymax-ymin)/ybin);
-  float stepx = (xmax-xmin)/nx;
-  float stepy = (ymax-ymin)/ny;
-  xmin -= stepx;    xmax += stepx;
-  ymin -= stepy;    ymax += stepy;
-  nx +=2; ny+=2;
-  TProfile2D *hlim = new TProfile2D("hlim","hlim", nx,xmin,xmax, ny, ymin,ymax);
-  return hlim;
-}
-
 void zoomH2(TH2 *h2,  double &xmin, double &xmax, double &ymin, double &ymax)
 {
     int firstNonZeroX = h2->GetNbinsX();
@@ -166,6 +140,36 @@ void zoomH2(TH2 *h2,  double &xmin, double &xmax, double &ymin, double &ymax)
     ymin = h2->GetYaxis()->GetBinLowEdge(firstNonZeroY);
     ymax = h2->GetYaxis()->GetBinUpEdge(lastNonZeroY);
 }
+
+TProfile2D *zoomH2(TH2 *h2a, TH2 *h2b, float xbin, float ybin)
+{
+  double xmin1,xmax1,ymin1,ymax1;
+  double xmin2,xmax2,ymin2,ymax2;
+  zoomH2(h2a, xmin1,xmax1,ymin1,ymax1);
+  zoomH2(h2b, xmin2,xmax2,ymin2,ymax2);
+
+  double xmin = fmin(xmin1,xmin2);
+  double ymin = fmin(ymin1,ymin2);
+  double xmax = fmax(xmax1,xmax2);
+  double ymax = fmax(ymax1,ymax2);
+// Set new axis limits
+  h2a->GetXaxis()->SetRangeUser(xmin, xmax);
+  h2a->GetYaxis()->SetRangeUser(ymin, ymax);
+  h2b->GetXaxis()->SetRangeUser(xmin, xmax);
+  h2b->GetYaxis()->SetRangeUser(ymin, ymax);
+
+  int nx=(int)((xmax-xmin)/xbin);
+  int ny=(int)((ymax-ymin)/ybin);
+  float stepx = (xmax-xmin)/nx;
+  float stepy = (ymax-ymin)/ny;
+  xmin -= stepx;    xmax += stepx;
+  ymin -= stepy;    ymax += stepy;
+  nx +=2; ny+=2;
+  TProfile2D *hlim = new TProfile2D("hlim","hlim", nx,xmin,xmax, ny, ymin,ymax);
+  return hlim;
+}
+
+
 
 void DrawHistStatsBlue(TH1 *h, float xstart=0.65)
 {
@@ -209,11 +213,14 @@ TH1F *Spectrum(TH2F &h2, const char *name)
   return h;
 }
 
+
+float xyMax=100*kRun;
+float coinsMax=500*kRun;
+
 void DrawMos(int pl)
 {
-  TFile *f = TFile::Open(Form(path+"/p%03i/%i.%i.0.0.mos.root", pl, brick, pl), "READ");
+  TFile *f = TFile::Open(Form(+"p%03i/%i.%i.0.0.mos.root", pl, brick, pl), "READ");
   TTree *couples = (TTree*)f->Get("couples");
-
   TCut cut("s2.eW>20");
 
   gStyle->SetNumberContours(256);
@@ -226,13 +233,11 @@ void DrawMos(int pl)
   TProfile2D *hlim = zoomH2(h1,h2, stepX, stepY);
   TCanvas *c = new TCanvas(Form("mos%d",pl),Form("mosaic at pl %d",pl),1920,1080);
   c->Divide(4,3);
-
   c->cd(1);
-  h1->SetMaximum(getMeanEntries(h1)*2.8);
+  h1->SetMaximum(xyMax); //h1->Smooth();
   h1->Draw("colz");
-
   c->cd(5);
-  h2->SetMaximum(getMeanEntries(h2)*2.8);
+  h2->SetMaximum(xyMax); //h2->Smooth();
   h2->Draw("colz");
 
   TProfile2D *hxp1 = (TProfile2D*)(hlim->Clone("hxp1")); hxp1->SetTitle("dx side 1");
@@ -242,14 +247,14 @@ void DrawMos(int pl)
   TProfile2D *hwp1 = (TProfile2D*)(hlim->Clone("hwp1")); hwp1->SetTitle("coins side 1");
   TProfile2D *hwp2 = (TProfile2D*)(hlim->Clone("hwp2")); hwp2->SetTitle("coins side 2");
 
-  hxp1->SetMinimum(-20);  hxp1->SetMaximum(20);
-  hxp2->SetMinimum(-20);  hxp2->SetMaximum(20);
+  hxp1->SetMinimum(-10);  hxp1->SetMaximum(10);
+  hxp2->SetMinimum(-10);  hxp2->SetMaximum(10);
 
-  hyp1->SetMinimum(-20);  hyp1->SetMaximum(20);
-  hyp2->SetMinimum(-20);  hyp2->SetMaximum(20);
+  hyp1->SetMinimum(-10);  hyp1->SetMaximum(10);
+  hyp2->SetMinimum(-10);  hyp2->SetMaximum(10);
 
-  hwp1->SetMaximum(getMeanEntries(hwp1)*2.8);
-  hwp2->SetMaximum(getMeanEntries(hwp2)*2.8);
+  hwp1->SetMaximum(coinsMax);
+  hwp2->SetMaximum(coinsMax);
 
   gStyle->SetOptStat("n");
 
@@ -281,18 +286,18 @@ void DrawMos(int pl)
   TH1 *hw2 = (TH1*)gDirectory->Get("hw2");
   DrawHistStatsBlue(hw1);
   DrawHistStatsRed(hw2);
-  hw1->GetXaxis()->SetRangeUser(0, getMeanEntries(hw1)*2.8);
-  hw2->GetXaxis()->SetRangeUser(0, getMeanEntries(hw2)*2.8);
+  hw1->GetXaxis()->SetRangeUser(0, coinsMax);
+  hw2->GetXaxis()->SetRangeUser(0, coinsMax);
 
   c->cd(11);
-  couples->Draw("s2.eX-s1.eX>>hdx1(200,-20,20)","s1.Side()==1" && cut, "goff");
-  couples->Draw("s2.eX-s1.eX>>hdx2(200,-20,20)","s1.Side()==2" && cut, "goff");
+  couples->Draw("s2.eX-s1.eX>>hdx1(100,-10,10)","s1.Side()==1" && cut, "goff");
+  couples->Draw("s2.eX-s1.eX>>hdx2(100,-10,10)","s1.Side()==2" && cut, "goff");
   DrawHistStatsBlue((TH1*)gDirectory->Get("hdx1"));
   DrawHistStatsRed((TH1*)gDirectory->Get("hdx2"));
 
   c->cd(12);
-  couples->Draw("s2.eY-s1.eY>>hdy1(200,-20,20)","s1.Side()==1" && cut);
-  couples->Draw("s2.eY-s1.eY>>hdy2(200,-20,20)","s1.Side()==2" && cut, "same");
+  couples->Draw("s2.eY-s1.eY>>hdy1(100,-10,10)","s1.Side()==1" && cut);
+  couples->Draw("s2.eY-s1.eY>>hdy2(100,-10,10)","s1.Side()==2" && cut, "same");
   DrawHistStatsBlue((TH1*)gDirectory->Get("hdy1"));
   DrawHistStatsRed((TH1*)gDirectory->Get("hdy2"));
 
@@ -309,7 +314,7 @@ void DrawMos(int pl)
   t->DrawText(0.25,0.0001, Form("%s/%s    %s",gSystem->WorkingDirectory(),couples->GetCurrentFile()->GetName(),time.AsString()) );
   printf("DrawMos: %s\n",couples->GetCurrentFile()->GetName());
 
-  if(gROOT->IsBatch()) c->SaveAs(Form("mos%2.2d.png",pl));
+  if(gROOT->IsBatch()) c->SaveAs(Form(plotpath+"/mos%2.2d.png",pl));
 }
 
 void check_mos(int lastplate, int firstplate) {
