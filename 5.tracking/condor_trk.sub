@@ -11,7 +11,7 @@ error = error/trk.$(ClusterId).$(CELL).err
 log = log/trk.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
-transfer_input_files=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/$(BRICKFOLDER).0.0.0.set.root
+transfer_input_files=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/AFF.$(CELL).tar.gz
 output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/
 transfer_output_files=$(BRICKFOLDER).0.$INT(X).$INT(Y).set.root,$(BRICKFOLDER).0.$INT(X).$INT(Y).trk.root, unbend.root
 should_transfer_files = yes
