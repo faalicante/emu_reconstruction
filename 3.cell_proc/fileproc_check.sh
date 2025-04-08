@@ -44,7 +44,7 @@ process_cell_cp() {
 export -f process_cell_cp
 
 # Run in parallel
-seq 0 323 | parallel --jobs 80% --ungroup process_cell_cp
+seq 0 323 | parallel --jobs 90% --ungroup process_cell_cp
 
 # Final report
 counter_cp=$(wc -l < "$MISSING_FILE_LOG")

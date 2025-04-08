@@ -33,7 +33,7 @@ process_cell() {
 
 export -f process_cell
 
-seq 0 323 | parallel --jobs 80% --ungroup process_cell
+seq 0 323 | parallel --jobs 90% --ungroup process_cell
 
 counter_aff=$(wc -l < "$MISSING_FILE_LOG")
 echo "Missing $counter_aff cp files."
