@@ -8,8 +8,6 @@ ycell=$((CELL / 18 + 1))
 folder=cell_${xcell}0_${ycell}0/$BRICKFOLDER
 counter_local=0
 
-echo "rocessing cell $CELL"
-
 for p in $(seq 1 57); do
     plate=$(printf "p%03d" $p)
     base="$folder/$plate/$BRICKID.$p.$xcell.$ycell"
