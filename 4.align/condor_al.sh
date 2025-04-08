@@ -31,7 +31,7 @@ for PLATENUMBER in $(seq 1 57); do
     ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root ./$MY_DIR/$PLATEFOLDER
 done
 ln -s $EXP_DIR/scanset.sh ./$MY_DIR
-ln -s $EXP_DIR/align.sh ./$MY_DIR
+ln -s $EXP_DIR/align_set.sh ./$MY_DIR
 ln -s $EXP_DIR/align_*.rootrc ./$MY_DIR
 
 tar -xzf AFF.tar.gz
