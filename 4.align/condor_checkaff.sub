@@ -1,0 +1,11 @@
+executable = condor_checkaff.sh
+RUN = 
+BRICK = 
+arguments = $(ClusterID) $(RUN) $(BRICK) $(CELL)
+output = output/check_aff.$(ClusterId).$(CELL).out
+error = error/check_aff.$(ClusterId).$(CELL).err
+log = log/check_aff.$(ClusterId).log
+request_cpus = 1
++JobFlavour = espresso
+should_transfer_files = NO
+queue CELL from seq 0 323 |
