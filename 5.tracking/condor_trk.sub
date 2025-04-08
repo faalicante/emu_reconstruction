@@ -11,9 +11,9 @@ error = error/trk.$(ClusterId).$(CELL).err
 log = log/trk.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
-transfer_input_files=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/$(BRICK).0.0.0.set.root
+transfer_input_files=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/$(BRICKFOLDER).0.0.0.set.root
 output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/
-transfer_output_files=$(BRICK).0.$INT(X).$INT(Y).set.root,$(BRICK).0.$INT(X).$INT(Y).trk.root, unbend.root
+transfer_output_files=$(BRICKFOLDER).0.$INT(X).$INT(Y).set.root,$(BRICKFOLDER).0.$INT(X).$INT(Y).trk.root, unbend.root
 should_transfer_files = yes
 
 +JobFlavour = "testmatch"
@@ -23,6 +23,6 @@ requirements = TARGET.HEPSPEC_PER_CORE =!= UNDEFINED
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
-on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0) && fileExists("$(BRICK).0.$INT(X).$INT(Y).trk.root"))
+on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0) && fileExists("$(BRICKFOLDER).0.$INT(X).$INT(Y).trk.root"))
 max_retries             = 3
 queue CELL from seq 0 323 |

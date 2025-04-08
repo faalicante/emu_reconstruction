@@ -37,8 +37,8 @@ ln -s $EXP_DIR/unbend*.rootrc ./$MY_DIR
 
 cd $MY_DIR
 
-echo "tracking $BRICKID.0.0.0"
+echo "tracking $BRICKFOLDER.0.0.0"
 source tracking_all.sh $BRICKID
-mv $BRICKID.0.0.0.set.root $MAIN_DIR/$BRICKID.0.$xcell.$ycell.set.root
-mv $BRICKID.0.0.0.trk.root $MAIN_DIR/$BRICKID.0.$xcell.$ycell.trk.root
+mv $BRICKFOLDER.0.0.0.set.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.set.root
+mv $BRICKFOLDER.0.0.0.trk.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.trk.root
 mv unbend.root $MAIN_DIR/unbend.$xcell.$ycell.root
