@@ -30,7 +30,7 @@ for PLATENUMBER in $(seq 1 57); do
     ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEFOLDER
     ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root ./$MY_DIR/$PLATEFOLDER
 done
-mv $MAIN_DIR/$BRICKID.0.0.0.set.root ./$MY_DIR
+mv $MAIN_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
 ln -s $EXP_DIR/tracking_all.sh ./$MY_DIR
 ln -s $EXP_DIR/track*.rootrc ./$MY_DIR
 ln -s $EXP_DIR/unbend*.rootrc ./$MY_DIR
