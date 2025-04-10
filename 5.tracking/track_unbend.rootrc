@@ -1,4 +1,4 @@
-fedra.readCPcut:                         eCHI2P<2.4&&eN1<=1&&eN2<=1&&ss.Theta()<0.015
+fedra.readCPcut:                         eCHI2P<2.4&&eN1<=1&&eN2<=1&&s.Theta()<0.015
 fedra.track.TrZmap:                      3800 0 190000   3800 0 190000   30
 fedra.track.npass:                       1
 fedra.track.minPlate:                    -999
