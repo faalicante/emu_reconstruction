@@ -1,9 +1,0 @@
-executable = fileaff_check.sh
-arguments = $(BRICK) $(cell)
-output = logs/cell_$(cell).out
-error = logs/cell_$(cell).err
-log = logs/cell_$(cell).log
-request_cpus = 1
-+JobFlavour = espresso
-should_transfer_files = NO
-queue cell from seq 0 323 |
