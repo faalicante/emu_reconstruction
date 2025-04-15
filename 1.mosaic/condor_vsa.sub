@@ -3,21 +3,24 @@ RUN =
 BRICK = 
 BRICKFOLDER = b$INT(BRICK,%06d)
 PLATEFOLDER = p$INT(PLATENUMBER,%03d)
-arguments = $(ClusterID) $(RUN) $(BRICK) $(BRICKFOLDER) $(PLATENUMBER) $(PLATEFOLDER) 
+EXP_DIR = /eos/experiment/sndlhc/emulsionData/2022/emureco_CERN
+arguments = $(ClusterID) $(RUN) $(BRICK) $(BRICKFOLDER) $(PLATENUMBER) $(PLATEFOLDER) $(EXP_DIR)
 output = output/vsa.$(ClusterId).$(PLATENUMBER).out
 error = error/vsa.$(ClusterId).$(PLATENUMBER).err
 log = log/vsa.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
-output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/$(PLATEFOLDER)/
+output_destination=root://eospublic.cern.ch/$(EXP_DIR)/RUN$(RUN)/$(BRICKFOLDER)/$(PLATEFOLDER)/
 transfer_output_files=$(BRICK).$(PLATENUMBER).0.0.mos.root
-should_transfer_files = if_needed
+should_transfer_files = yes
 
 +JobFlavour = "tomorrow"
 request_memory = 3GB
++HEPSPEC_PER_CORE = 10
+requirements = TARGET.HEPSPEC_PER_CORE =!= UNDEFINED
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
-on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0))
+on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0) && fileExists("$(BRICK).$(PLATENUMBER).0.0.mos.root")
 max_retries             = 3
 queue PLATENUMBER from seq 1 57 |

@@ -7,6 +7,8 @@ BRICKID=$3
 BRICKFOLDER=$4
 PLATENUMBER=$5
 PLATEFOLDER=$6
+EXP_PRE=$7
+EXP_DIR=$EXP_PRE/RUN$RUN/$BRICKFOLDER/cells/$CELLFOLDER/$BRICKFOLDER
 
 echo "Set up SND environment"
 SNDBUILD_DIR=/afs/cern.ch/user/s/snd2cern/public/SNDBUILD/sw
@@ -21,7 +23,6 @@ export XROOTD_VMP=eospublic.cern.ch:/eos=/eos
 MAIN_DIR=$PWD
 cd $MAIN_DIR
 MY_DIR=$PLATENUMBER/$BRICKFOLDER
-EXP_DIR=/eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$RUN/$BRICKFOLDER
 mkdir -p -v ./$MY_DIR/$PLATEFOLDER
 
 ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEFOLDER
