@@ -21,6 +21,6 @@ requirements = TARGET.HEPSPEC_PER_CORE =!= UNDEFINED
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
-on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0) && fileExists("$(BRICK).$(PLATENUMBER).0.0.mos.root")
+on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0) && fileExists("$(BRICK).$(PLATENUMBER).0.0.mos.root"))
 max_retries             = 3
 queue PLATENUMBER from seq 1 57 |
