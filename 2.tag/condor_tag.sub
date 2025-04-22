@@ -3,19 +3,20 @@ RUN =
 BRICK = 
 BRICKFOLDER = b$INT(BRICK,%06d)
 PLATEFOLDER = p$INT(PLATENUMBER,%03d)
-arguments = $(ClusterID) $(RUN) $(BRICK) $(BRICKFOLDER) $(PLATENUMBER) $(PLATEFOLDER) 
+EXP_DIR = /eos/experiment/sndlhc/emulsionData/2022/emureco_CERN
+arguments = $(ClusterID) $(RUN) $(BRICK) $(BRICKFOLDER) $(PLATENUMBER) $(PLATEFOLDER) $(EXP_DIR)
 output = output/tag.$(ClusterId).$(PLATENUMBER).out
 error = error/tag.$(ClusterId).$(PLATENUMBER).err
 log = log/tag.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
-transfer_input_files=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/$(PLATEFOLDER)/$(BRICK).$(PLATENUMBER).0.0.mos.root
-output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/$(PLATEFOLDER)/
+transfer_input_files=root://eospublic.cern.ch/$(EXP_DIR)/RUN$(RUN)/$(BRICKFOLDER)/$(PLATEFOLDER)/$(BRICK).$(PLATENUMBER).0.0.mos.root
+output_destination=root://eospublic.cern.ch/$(EXP_DIR)/RUN$(RUN)/$(BRICKFOLDER)/$(PLATEFOLDER)/
 transfer_output_files=$(BRICK).$(PLATENUMBER).0.0.mos.root,$(BRICK).$(PLATENUMBER).0.0.tag.root
 should_transfer_files = if_needed
 
-+JobFlavour = "testmatch"
-request_memory = 32GB
++JobFlavour = "longlunch"
+request_memory = 3GB
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
