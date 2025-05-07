@@ -24,7 +24,7 @@ export XROOTD_VMP=eospublic.cern.ch:/eos=/eos
 
 MAIN_DIR=$PWD
 cd $MAIN_DIR
-MY_DIR=${CELL}_${PLATENUMBER}/$BRICKFOLDER
+MY_DIR=${CELL}/$BRICKFOLDER
 EXP_DIR=/eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$RUN/$BRICKFOLDER/cells/$CELLFOLDER/$BRICKFOLDER
 
 ln -s /eos/experiment/sndlhc/emulsionData/2022/CERN/CALIBRATIONS/mic4/diff_matrix_top_Dec23.txt ./$MY_DIR
@@ -46,7 +46,7 @@ ln -s $EXP_DIR/mosmerge.sh ./$MY_DIR
 cd $MY_DIR
 
 echo "viewsideal $BRICKID.0.0.0"
-source viewsideal.sh $BRICKID
+source viewsideal_set.sh $BRICKID
 
 echo "mosalignbeam $BRICKID.0.0.0"
 source mosalignbeam.sh $BRICKID

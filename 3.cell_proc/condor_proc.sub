@@ -7,8 +7,8 @@ X = ($(CELL) % 18 + 1)
 Y = ($(CELL) / 18 + 1)
 CELLFOLDER = cell_$INT(X)0_$INT(Y)0
 arguments = $(ClusterID) $(RUN) $(BRICK) $(BRICKFOLDER) $(CELL) $(CELLFOLDER) $(EXP_DIR)
-output = output/proc.$(ClusterId).$(CELL).$(PLATENUMBER).out
-error = error/proc.$(ClusterId).$(CELL).$(PLATENUMBER).err
+output = output/proc.$(ClusterId).$(CELL).out
+error = error/proc.$(ClusterId).$(CELL).err
 log = log/proc.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
@@ -16,7 +16,7 @@ output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/
 transfer_output_files=$(BRICK).*.$INT(X).$INT(Y).mos.root, $(BRICK).*.$INT(X).$INT(Y).cp.root
 should_transfer_files = yes
 
-+JobFlavour = "workday"
++JobFlavour = "tomorrow"
 request_memory = 3GB
 +HEPSPEC_PER_CORE = 10
 requirements = TARGET.HEPSPEC_PER_CORE =!= UNDEFINED
@@ -25,4 +25,4 @@ requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
 on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0))
 max_retries             = 3
-queue PLATENUMBER, CELL from volumes.dat
+queue CELL from seq 0 323 |
