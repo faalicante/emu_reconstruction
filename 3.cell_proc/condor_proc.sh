@@ -7,10 +7,10 @@ BRICKID=$3
 BRICKFOLDER=$4
 CELL=$5
 CELLFOLDER=$6
-PLATENUMBER=$7
-PLATEFOLDER=$8
 xcell=$((CELL % 18 + 1))
 ycell=$((CELL / 18 + 1))
+EXP_PRE=$7
+EXP_DIR=$EXP_PRE/RUN$RUN/$BRICKFOLDER/cells/$CELLFOLDER/$BRICKFOLDER
 
 echo "Set up SND environment"
 SNDBUILD_DIR=/afs/cern.ch/user/s/snd2cern/public/SNDBUILD/sw
@@ -26,32 +26,39 @@ MAIN_DIR=$PWD
 cd $MAIN_DIR
 MY_DIR=${CELL}_${PLATENUMBER}/$BRICKFOLDER
 EXP_DIR=/eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$RUN/$BRICKFOLDER/cells/$CELLFOLDER/$BRICKFOLDER
-mkdir -p -v ./$MY_DIR/$PLATEFOLDER
 
 ln -s /eos/experiment/sndlhc/emulsionData/2022/CERN/CALIBRATIONS/mic4/diff_matrix_top_Dec23.txt ./$MY_DIR
 ln -s /eos/experiment/sndlhc/emulsionData/2022/CERN/CALIBRATIONS/mic4/diff_matrix_bot_Dec23.txt ./$MY_DIR
-ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEFOLDER
+for PLATENUMBER in $(seq 1 57); do
+    PLATEFOLDER="$(printf "p%0*d" 3 $PLATENUMBER)"
+    mkdir -p -v ./$MY_DIR/$PLATEFOLDER
+    ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEFOLDER
+    ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root ./$MY_DIR/$PLATEFOLDER
+done
+
 ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
-ln -s $EXP_DIR/viewsideal.sh ./$MY_DIR
 ln -s $EXP_DIR/viewsideal.rootrc ./$MY_DIR
+ln -s $EXP_DIR/viewsideal_set.sh ./$MY_DIR
 ln -s $EXP_DIR/mosalignbeam.sh ./$MY_DIR
 ln -s $EXP_DIR/moslink.sh ./$MY_DIR
 ln -s $EXP_DIR/mosmerge.sh ./$MY_DIR
 
 cd $MY_DIR
 
-echo "viewsideal $BRICKID.$PLATENUMBER.0.0"
-source viewsideal.sh $BRICKID $PLATENUMBER
+echo "viewsideal $BRICKID.0.0.0"
+source viewsideal.sh $BRICKID
 
-echo "mosalignbeam $BRICKID.$PLATENUMBER.0.0"
-source mosalignbeam.sh $BRICKID $PLATENUMBER
+echo "mosalignbeam $BRICKID.0.0.0"
+source mosalignbeam.sh $BRICKID
 
-echo "moslink $BRICKID.$PLATENUMBER.0.0"
-source moslink.sh $BRICKID $PLATENUMBER
+echo "moslink $BRICKID.0.0.0"
+source moslink.sh $BRICKID
 
-echo "moslink merge $BRICKID.$PLATENUMBER.0.0"
-source mosmerge.sh $BRICKID $PLATENUMBER
+echo "moslink merge $BRICKID.0.0.0"
+source mosmerge.sh $BRICKID
 
-
-mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.mos.root
-mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.cp.root
+for PLATENUMBER in $(seq 1 57); do
+    PLATEFOLDER="$(printf "p%0*d" 3 $PLATENUMBER)"
+    mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.mos.root
+    mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.cp.root
+done
