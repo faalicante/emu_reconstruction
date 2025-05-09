@@ -11,11 +11,6 @@ output = output/proc.$(ClusterId).$(CELL).out
 error = error/proc.$(ClusterId).$(CELL).err
 log = log/proc.$(ClusterId).log
 
-transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
-output_destination=root://eospublic.cern.ch//eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)
-transfer_output_files=$(BRICK).*.$INT(X).$INT(Y).mos.root, $(BRICK).*.$INT(X).$INT(Y).cp.root
-should_transfer_files = yes
-
 +JobFlavour = "tomorrow"
 request_memory = 3GB
 +HEPSPEC_PER_CORE = 10

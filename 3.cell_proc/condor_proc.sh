@@ -25,7 +25,6 @@ export XROOTD_VMP=eospublic.cern.ch:/eos=/eos
 MAIN_DIR=$PWD
 cd $MAIN_DIR
 MY_DIR=${CELL}/$BRICKFOLDER
-EXP_DIR=/eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$RUN/$BRICKFOLDER/cells/$CELLFOLDER/$BRICKFOLDER
 
 ln -s /eos/experiment/sndlhc/emulsionData/2022/CERN/CALIBRATIONS/mic4/diff_matrix_top_Dec23.txt ./$MY_DIR
 ln -s /eos/experiment/sndlhc/emulsionData/2022/CERN/CALIBRATIONS/mic4/diff_matrix_bot_Dec23.txt ./$MY_DIR
@@ -59,6 +58,6 @@ source mosmerge.sh $BRICKID
 
 for PLATENUMBER in $(seq 1 57); do
     PLATEFOLDER="$(printf "p%0*d" 3 $PLATENUMBER)"
-    mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.mos.root
-    mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.cp.root
+    xrdcp -f $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $EXP_DIR/$PLATEFOLDER
+    mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root $EXP_DIR/$PLATEFOLDER
 done
