@@ -1,2 +1,3 @@
 BRICKID=$1
-moslink -set=$BRICKID.0.0.0 -merge -v=1
+PLATENUMBER=$2
+moslink -id=$BRICKID.$PLATENUMBER.0.0 -merge -v=1 
