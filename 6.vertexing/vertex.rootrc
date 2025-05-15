@@ -1,0 +1,17 @@
+emvertex.vtx.DZmax:                      3000.
+emvertex.vtx.ProbMinV:                   0.001
+emvertex.vtx.ImpMax:                     3.5
+emvertex.vtx.UseMom:                     0
+emvertex.vtx.UseSegPar:                  0
+emvertex.vtx.QualityMode:                0
+#emvertex.vtx.cutvtx:                     (flag==0||flag==3)&&n>4
+emvertex.vtx.cutvtx:                     ((flag>=0&&n>4)||(flag==0&&n>3))&&probability>0.9
+emvertex.vtx.cuttr:                      nseg>4&&npl<50
+emvertex.addtr.doit:                     1
+#emvertex.addtr.cuttr:                   nseg>20&&abs(t.eX-109862)<500&&abs(t.eY-159096)<500
+emvertex.addtr.cuttr:                    nseg>2
+emvertex.trfit.doit:                     0
+emvertex.trfit.P:                        10
+emvertex.trfit.M:                        0.139
+emvertex.bt.Sigma0:                      0.5 0.5 0.0025 0.0025
+emvertex.bt.Degrad:                      5
