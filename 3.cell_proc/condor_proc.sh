@@ -26,11 +26,9 @@ export XROOTD_VMP=eospublic.cern.ch:/eos=/eos
 
 MAIN_DIR=$PWD
 cd $MAIN_DIR
-MY_DIR=${CELL}/$BRICKFOLDER
+MY_DIR=${CELL}_${PLATENUMBER}/$BRICKFOLDER
 mkdir -p -v ./$MY_DIR/$PLATEFOLDER
 
-ln -s /eos/experiment/sndlhc/emulsionData/2022/CERN/CALIBRATIONS/mic4/diff_matrix_top_Dec23.txt ./$MY_DIR
-ln -s /eos/experiment/sndlhc/emulsionData/2022/CERN/CALIBRATIONS/mic4/diff_matrix_bot_Dec23.txt ./$MY_DIR
 ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEFOLDER
 ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
 ln -s $EXP_DIR/viewsideal.rootrc ./$MY_DIR
@@ -53,6 +51,5 @@ source moslink.sh $BRICKID $PLATENUMBER
 echo "moslink merge $BRICKID.$PLATENUMBER.0.0"
 source mosmerge.sh $BRICKID $PLATENUMBER
 
-
-mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.mos.root
-mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.cp.root
+c $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.mos.root
+cp $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.cp.root
