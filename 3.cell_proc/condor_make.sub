@@ -1,12 +1,13 @@
 executable = condor_make.sh
 RUN = 
 BRICK = 
+EXP_DIR = /eos/experiment/sndlhc/emulsionData/2022/emureco_CERN
 arguments = $(ClusterID) $(RUN) $(BRICK) $(CELL)
 output = output/make.$(ClusterId).$(CELL).out
 error = error/make.$(ClusterId).$(CELL).err
 log = log/make.$(ClusterId).log
 +JobFlavour = "espresso"
-request_memory = 1GB
+request_memory = 3GB
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
