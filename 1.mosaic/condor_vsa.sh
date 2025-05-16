@@ -29,9 +29,16 @@ ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEF
 ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
 ln -s $EXP_DIR/viewsideal.sh ./$MY_DIR
 ln -s $EXP_DIR/viewsideal.rootrc ./$MY_DIR
+ln -s $EXP_DIR/mostag.sh ./$MY_DIR
+
 
 cd $MY_DIR
 
+echo "viewsideal $BRICKID.$PLATENUMBER.0.0"
 source viewsideal.sh $BRICKID $PLATENUMBER
 
-mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/
+echo "mostag $BRICKID.$PLATENUMBER.0.0"
+source mostag.sh $BRICKID $PLATENUMBER
+
+cp $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/
+cp $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.tag.root $MAIN_DIR/
