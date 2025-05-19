@@ -1,0 +1,31 @@
+executable = condor_alp.sh
+RUN = 
+BRICK = 
+PLATENUMBER = 
+EXP_DIR = /eos/experiment/sndlhc/emulsionData/2022/emureco_CERN
+BRICKFOLDER = b$INT(BRICK,%06d)
+PLATEFOLDER = p$INT(PLATENUMBER,%03d)
+X = ($(CELL) % 18 + 1)
+Y = ($(CELL) / 18 + 1)
+CELLFOLDER = cell_$INT(X)0_$INT(Y)0
+arguments = $(ClusterID) $(RUN) $(BRICK) $(BRICKFOLDER) $(CELL) $(CELLFOLDER) $(PLATENUMBER) $(PLATEFOLDER) $(EXP_DIR)
+output = output/alp.$(ClusterId).$(CELL).out
+error = error/alp.$(ClusterId).$(CELL).err
+log = log/alp.$(ClusterId).log
+
+transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
+transfer_input_files=root://eospublic.cern.ch/$(EXP_DIR)/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/AFF/
+output_destination=root://eospublic.cern.ch/$(EXP_DIR)/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/AFF/
+transfer_output_files=$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).aff.par, $(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).al.root
+should_transfer_files = yes
+
++JobFlavour = "microcentury"
+request_memory = 3GB
++HEPSPEC_PER_CORE = 10
+requirements = TARGET.HEPSPEC_PER_CORE =!= UNDEFINED
+notification = Never
+requirements = (OpSysAndVer =?= "AlmaLinux9")
+requirements = Machine =!= LastRemoteHost
+on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0) && fileExists("$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).aff.par"))
+max_retries             = 3
+queue CELL from seq 0 323 |
