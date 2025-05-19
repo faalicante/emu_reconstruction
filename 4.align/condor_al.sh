@@ -9,7 +9,8 @@ CELL=$5
 CELLFOLDER=$6
 xcell=$((CELL % 18 + 1))
 ycell=$((CELL / 18 + 1))
-EXP_DIR=/eos/experiment/sndlhc/emulsionData/2022/emureco_CERN/RUN$RUN/$BRICKFOLDER/cells/$CELLFOLDER/$BRICKFOLDER
+EXP_PRE=$7
+EXP_DIR=$EXP_PRE/RUN$RUN/$BRICKFOLDER/cells/$CELLFOLDER/$BRICKFOLDER
 
 echo "Set up SND environment"
 SNDBUILD_DIR=/afs/cern.ch/user/s/snd2cern/public/SNDBUILD/sw
@@ -35,22 +36,23 @@ ln -s $EXP_DIR/align_set.sh ./$MY_DIR
 ln -s $EXP_DIR/align_*.rootrc ./$MY_DIR
 
 tar -xzf AFF.tar.gz
-mv AFF ./$MY_DIR
+cp AFF ./$MY_DIR
 
 cd $MY_DIR
 
 echo "makescanset $BRICKID.0.0.0"
 source scanset.sh $BRICKID
+
 cp align_2.rootrc align.rootrc
 echo "align 2 $BRICKID.0.0.0"
-source align_set.sh $BRICKID
-echo "makescanset $BRICKID.0.0.0"
-source scanset.sh $BRICKID
-cp align_3.rootrc align.rootrc
-echo "align 3 $BRICKID.0.0.0"
+
 source align_set.sh $BRICKID
 echo "makescanset $BRICKID.0.0.0"
 source scanset.sh $BRICKID
 
+cp align_3.rootrc align.rootrc
+echo "align 3 $BRICKID.0.0.0"
+source align_set.sh $BRICKID
+
 tar -czf AFF.tar.gz AFF/
-mv AFF.tar.gz $MAIN_DIR/AFF.$CELL.tar.gz
+cp AFF.tar.gz $MAIN_DIR/AFF.$CELL.tar.gz
