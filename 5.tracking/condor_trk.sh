@@ -31,9 +31,7 @@ for PLATENUMBER in $(seq 1 57); do
     ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEFOLDER
     ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root ./$MY_DIR/$PLATEFOLDER
 done
-tar -xzf AFF.$CELL.tar.gz
-mv AFF ./$MY_DIR
-
+ln -s $EXP_DIR/AFAF ./$MY_DIR
 ln -s $EXP_DIR/tracking_all.sh ./$MY_DIR
 ln -s $EXP_DIR/track*.rootrc ./$MY_DIR
 ln -s $EXP_DIR/unbend.rootrc ./$MY_DIR
