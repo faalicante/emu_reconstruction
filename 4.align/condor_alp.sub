@@ -2,21 +2,23 @@ executable = condor_alp.sh
 RUN = 
 BRICK = 
 PLATENUMBER = 
+PLATENEXT = ($(PLATENUMBER) + 1)
 EXP_DIR = /eos/experiment/sndlhc/emulsionData/2022/emureco_CERN
 BRICKFOLDER = b$INT(BRICK,%06d)
 PLATEFOLDER = p$INT(PLATENUMBER,%03d)
+NEXTFOLDER = p$INT(PLATENEXT,%03d)
 X = ($(CELL) % 18 + 1)
 Y = ($(CELL) / 18 + 1)
 CELLFOLDER = cell_$INT(X)0_$INT(Y)0
-arguments = $(ClusterID) $(RUN) $(BRICK) $(BRICKFOLDER) $(CELL) $(CELLFOLDER) $(PLATENUMBER) $(PLATEFOLDER) $(EXP_DIR)
+arguments = $(ClusterID) $(RUN) $(BRICK) $(BRICKFOLDER) $(CELL) $(CELLFOLDER) $(PLATENUMBER) $(PLATEFOLDER) $(PLATENEXT) $(NEXTFOLDER) $(EXP_DIR)
 output = output/alp.$(ClusterId).$(CELL).out
 error = error/alp.$(ClusterId).$(CELL).err
 log = log/alp.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
-transfer_input_files=root://eospublic.cern.ch/$(EXP_DIR)/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/AFF/
+transfer_input_files=root://eospublic.cern.ch/$(EXP_DIR)/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/AFF/$(BRICK).$INT(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).0.0.aff.par
 output_destination=root://eospublic.cern.ch/$(EXP_DIR)/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/AFF/
-transfer_output_files=$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).aff.par, $(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).al.root
+transfer_output_files=$(BRICK).$INT(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).aff.par, $(BRICK).$INT(PLATENEXT).0.0_$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).al.root
 should_transfer_files = yes
 
 +JobFlavour = "microcentury"
