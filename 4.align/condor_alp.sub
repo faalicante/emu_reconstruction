@@ -1,7 +1,6 @@
 executable = condor_alp.sh
 RUN = 
 BRICK = 
-PLATENUMBER = 
 EXP_DIR = /eos/experiment/sndlhc/emulsionData/2022/emureco_CERN
 BRICKFOLDER = b$INT(BRICK,%06d)
 PLATEFOLDER = p$INT(PLATENUMBER,%03d)
@@ -29,4 +28,4 @@ requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
 on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0) && fileExists("$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).aff.par"))
 max_retries             = 3
-queue CELL from seq 0 323 |
+queue PLATENUMBER, CELL from volumes_al.dat

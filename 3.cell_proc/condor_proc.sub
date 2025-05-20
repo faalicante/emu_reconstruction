@@ -17,7 +17,7 @@ output_destination=root://eospublic.cern.ch/$(EXP_DIR)/RUN$(RUN)/$(BRICKFOLDER)/
 transfer_output_files=$(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).mos.root, $(BRICK).$(PLATENUMBER).$INT(X).$INT(Y).cp.root
 should_transfer_files = yes
 
-+JobFlavour = "espresso"
++JobFlavour = "microcentury"
 request_memory = 3GB
 request_cpus = 1
 +HEPSPEC_PER_CORE = 10
