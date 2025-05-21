@@ -25,7 +25,7 @@ export XROOTD_VMP=eospublic.cern.ch:/eos=/eos
 MAIN_DIR=$PWD
 cd $MAIN_DIR
 MY_DIR=${CELL}/$BRICKFOLDER
-
+mkdir -p $MY_DIR
 ln -s $EXP_DIR/vertexing.sh ./$MY_DIR
 ln -s $EXP_DIR/vertex.rootrc ./$MY_DIR
 ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
@@ -33,6 +33,7 @@ ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.trk.root ./$MY_DIR
 
 cd $MY_DIR
 
-echo "vertexinv $BRICKID.0.0.0"
+echo "vertexing $BRICKID.0.0.0"
 source vertexing.sh $BRICKID
+
 cp $BRICKFOLDER.0.0.0.vtx.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.root
