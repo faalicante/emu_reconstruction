@@ -13,7 +13,7 @@ log = log/vtx.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
 output_destination=root://eospublic.cern.ch/$(EXP_DIR)/RUN$(RUN)/$(BRICKFOLDER)/cells/$(CELLFOLDER)/$(BRICKFOLDER)/
-transfer_output_files=$(BRICKFOLDER).0.$INT(X).$INT(Y).vtx.root
+transfer_output_files=$(BRICKFOLDER).0.$INT(X).$INT(Y).vtx.root, $(BRICKFOLDER).0.$INT(X).$INT(Y).vtx.refit.root
 should_transfer_files = yes
 
 +JobFlavour = "workday"

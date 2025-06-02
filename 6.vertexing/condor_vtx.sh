@@ -27,13 +27,18 @@ cd $MAIN_DIR
 MY_DIR=${CELL}/$BRICKFOLDER
 mkdir -p $MY_DIR
 ln -s $EXP_DIR/vertexing.sh ./$MY_DIR
+ln -s $EXP_DIR/edipoda.sh ./$MY_DIR
 ln -s $EXP_DIR/vertex.rootrc ./$MY_DIR
 ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
 ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.trk.root ./$MY_DIR
 
 cd $MY_DIR
 
-echo "vertexing $BRICKID.0.0.0"
+echo "emvertex $BRICKID.0.0.0"
 source vertexing.sh $BRICKID
 
+echo "find track $BRICKID.0.0.0"
+source edipoda.sh $BRICKID
+
 cp $BRICKFOLDER.0.0.0.vtx.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.root
+cp $BRICKFOLDER.0.0.0.vtx.refit.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.refit.root
