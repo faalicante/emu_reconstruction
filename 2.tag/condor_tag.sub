@@ -10,9 +10,8 @@ error = error/tag.$(ClusterId).$(PLATENUMBER).err
 log = log/tag.$(ClusterId).log
 
 transfer_plugins=/eos/experiment/sndlhc/plugins/xrdcp_plugin.py
-transfer_input_files=root://eospublic.cern.ch/$(EXP_DIR)/RUN$(RUN)/$(BRICKFOLDER)/$(PLATEFOLDER)/$(BRICK).$(PLATENUMBER).0.0.mos.root
 output_destination=root://eospublic.cern.ch/$(EXP_DIR)/RUN$(RUN)/$(BRICKFOLDER)/$(PLATEFOLDER)/
-transfer_output_files=$(BRICK).$(PLATENUMBER).0.0.mos.root,$(BRICK).$(PLATENUMBER).0.0.tag.root
+transfer_output_files=$(BRICK).$(PLATENUMBER).0.0.tag.root
 should_transfer_files = if_needed
 
 +JobFlavour = "longlunch"
