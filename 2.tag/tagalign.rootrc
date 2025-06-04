@@ -1,0 +1,8 @@
+fedra.align.OffsetMax:                   10000
+fedra.align.DPHI:                        0.05
+fedra.align.SigmaR:                      50
+fedra.align.SigmaT:                      0.008
+fedra.align.DoFine:                      1
+fedra.align.DZ:                          0
+tagalign.env:                            tagalign.rootrc
+tagalign.outdir:                         ..
