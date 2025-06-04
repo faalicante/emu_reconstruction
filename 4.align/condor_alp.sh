@@ -50,16 +50,16 @@ cd $MY_DIR
 echo "makescanset $BRICKID.0.0.0"
 source scanset.sh $BRICKID
 
-cp align_2.rootrc align.rootrc
+cp alignR2.rootrc align.rootrc
 echo "align 2 $BRICKID.0.0.0"
-source align.sh $BRICKID $PLATENUMBER
+source alignplate.sh $BRICKID $PLATENUMBER
 
 echo "makescanset $BRICKID.0.0.0"
 source scanset.sh $BRICKID
 
-cp align_3.rootrc align.rootrc
-echo "align 3 $BRICKID.0.0.0"
-source align.sh $BRICKID $PLATENUMBER
+cp alignR1.rootrc align.rootrc
+echo "align 1 $BRICKID.0.0.0"
+source alignplate.sh $BRICKID $PLATENUMBER
 
 cp AFF/$BRICKID.$PLATENEXT.0.0_$BRICKID.$PLATENUMBER.0.0.aff.par $MAIN_DIR/$BRICKID.$PLATENEXT.0.0_$BRICKID.$PLATENUMBER.$xcell.$ycell.aff.par
 cp AFF/$BRICKID.$PLATENEXT.0.0_$BRICKID.$PLATENUMBER.0.0.al.root $MAIN_DIR/$BRICKID.$PLATENEXT.0.0_$BRICKID.$PLATENUMBER.$xcell.$ycell.al.root

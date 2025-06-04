@@ -17,7 +17,7 @@ emtra -set=$BRICKID.0.0.0 -v=2 -new
 echo "unbend 3 $BRICKID.0.0.0"
 emunbend -set=$BRICKID.0.0.0 -v=2 -corraff
 echo "tracking 4 $BRICKID.0.0.0"
-cp track_dosh.rootrc track.rootrc
+cp track_full.rootrc track.rootrc
 emtra -set=$BRICKID.0.0.0 -v=2 -new
 ## Last unbend to do after volume check,
 ## to generate unbend.root for resolution plots

@@ -1,0 +1,34 @@
+fedra.readCPcut:                         eCHI2P<2.4&&eN1<=1&&eN2<=1&&s.Theta()<10.1
+fedra.track.TrZmap:                      3800 0 190000   3800 0 190000   30
+fedra.track.npass:                       1
+fedra.track.minPlate:                    -999
+fedra.track.maxPlate:                    999
+fedra.track.refPlate:                    999
+fedra.track.nsegmin:                     1
+fedra.track.ngapmax:                     4
+fedra.track.DZGapMax:                    6000
+fedra.track.DRmax:                       25
+fedra.track.DTmax:                       0.015
+fedra.track.PredictionCutXY:             1 XPOS YPOS 5000. 5000.
+fedra.track.PredictionCutZ:              0 0. 0. 0.
+fedra.track.PredictionCutAng:            0 0. 0. 0. 0.
+fedra.track.Sigma0:                      1.5 1.5 0.0015 0.0015
+fedra.track.PulsRamp0:                   15 20
+fedra.track.PulsRamp04:                  15 20
+fedra.track.Degrad:                      3
+fedra.track.probmin:                     0.01
+fedra.track.momentum:                    1000
+fedra.track.mass:                        0.14
+fedra.track.do_use_mcs:                  3          # important! option 3 use coordinates for propagation
+fedra.track.RadX0:                       3504
+fedra.track.do_shtag:                    1
+fedra.track.erase:                       0
+fedra.track.do_realign:                  0
+fedra.track.do_misalign:                 0
+fedra.track.misalign_offset:             200
+fedra.track.do_local_corr:               0
+fedra.track.do_comb:                     0
+fedra.track.NsegMin:                     2
+emtra.outdir:                            ..
+emtra.env:                               track.rootrc
+emtra.EdbDebugLevel:                     1
