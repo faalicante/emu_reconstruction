@@ -40,8 +40,8 @@ ln -s $EXP_DIR/$NEXTFOLDER/$BRICKID.$PLATENEXT.0.0.raw.root ./$MY_DIR/$NEXTFOLDE
 ln -s $EXP_DIR/$NEXTFOLDER/$BRICKID.$PLATENEXT.0.0.cp.root ./$MY_DIR/$NEXTFOLDER
 
 ln -s $EXP_DIR/scanset.sh ./$MY_DIR
-ln -s $EXP_DIR/align.sh ./$MY_DIR
-ln -s $EXP_DIR/align_*.rootrc ./$MY_DIR
+ln -s $EXP_DIR/alignplate.sh ./$MY_DIR
+ln -s $EXP_DIR/align*.rootrc ./$MY_DIR
 
 cp $BRICKID.$PLATENEXT.0.0_$BRICKID.$PLATENUMBER.0.0.aff.par ./$MY_DIR/AFF
 
