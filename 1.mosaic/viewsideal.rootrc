@@ -13,7 +13,7 @@ fedra.vsa.Xfrag:                         20000
 fedra.vsa.Yfrag:                         20000
 fedra.vsa.AFID:                          1
 fedra.vsa.MinPeak:                       20
-#fedra.vsa.HeaderCut:                     abs(eXview-90000)<8500&&abs(eYview-90000)<8500
+fedra.vsa.HeaderCut:                     abs(eXview-90000)<8500&&abs(eYview-90000)<8500
 #fedra.vsa.HeaderCut:                     abs(eXview-XPOS)<8500&&abs(eYview-YPOS)<8500
 fedra.vsa.sigmaR:                        0.5
 fedra.vsa.sigmaT:                        0.005
