@@ -7,7 +7,7 @@ Mic5 microscope is shared between SND@LHC and FOOT:
 ### November 2023
 This set of corrections is using past corrections except for the cormtx step, correction matrices are stored in `Y:\corr_gen\mic5_24Nov23\2.cormtx\*\correction_matrix.txt`
 - Pixel size is `0.345291 -0.345583`
-- Correction matrices have been copied to `/eos/experiment/sndlhc/emulsionData/2022/Napoli/CALIBRATIONS/mic5_24Nov23/corr_mtx_*.txt`
+- Correction matrices have been copied to `/eos/experiment/sndlhc/emulsionData/Napoli/CALIBRATIONS/mic5_24Nov23/corr_mtx_*.txt`
 
 Films scanned in this configuration:
 - RUN3_W4_B1 P[1-10]
@@ -15,7 +15,7 @@ Films scanned in this configuration:
 ### April 2024
 This set of corrections includes all kind of corrections and it was made after the installation of the local Dispatcher.
 - Pixel size: `0.342817 -0.343588`
-- Since it is a recent set of corrections we have only the `mean_matrix.txt`, which is stored at `Y:\corr_gen\mic5_16May24\2.corrmtx\mean_matrix.txt` and `/eos/experiment/sndlhc/emulsionData/2022/Napoli/CALIBRATIONS/mic5_16May24/mean_matrix.txt`
+- Since it is a recent set of corrections we have only the `mean_matrix.txt`, which is stored at `Y:\corr_gen\mic5_16May24\2.corrmtx\mean_matrix.txt` and `/eos/experiment/sndlhc/emulsionData/Napoli/CALIBRATIONS/mic5_16May24/mean_matrix.txt`
 
 Films scanned in this configuration:
 - RUN3_W4_B1 P[11-57]

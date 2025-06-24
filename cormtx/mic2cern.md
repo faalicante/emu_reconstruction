@@ -7,7 +7,7 @@ Microscope 2 at CERN has undergone 4 different correction sets, so far (last upd
 
 ### July 2023 corrections
 Matrices to be used in the linking:
-`/eos/experiment/sndlhc/emulsionData/2022/CERN/CALIBRATIONS/mic2/diff_matrix_*_Jul23.txt`
+`/eos/experiment/sndlhc/emulsionData/CERN/CALIBRATIONS/mic2/diff_matrix_*_Jul23.txt`
 
 Films scanned with this configuration:
 - RUN1 W4 B2
@@ -15,7 +15,7 @@ Films scanned with this configuration:
 
 ### December 2023 corrections
 Matrices to be used in the linking:
-`/eos/experiment/sndlhc/emulsionData/2022/CERN/CALIBRATIONS/mic2/diff_matrix_*_Dec23.txt`
+`/eos/experiment/sndlhc/emulsionData/CERN/CALIBRATIONS/mic2/diff_matrix_*_Dec23.txt`
 
 Films scanned with this configuration:
 - RUN3 W5 B1 P41-60 + rescans

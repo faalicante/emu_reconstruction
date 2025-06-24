@@ -12,7 +12,7 @@ This set of corrections was the first made, pixel size was `0.3455 -0.3462` and 
 - `corr_mtx_bot_1.bin`
 - `corr_mtx_top_1.bin`
 
-Text files are stored on EOS: `/eos/experiment/sndlhc/emulsionData/2022/Napoli/CALIBRATIONS/mic3_2021/corr_mtx_*_1.txt`
+Text files are stored on EOS: `/eos/experiment/sndlhc/emulsionData/Napoli/CALIBRATIONS/mic3_2021/corr_mtx_*_1.txt`
 
 Matrices to be used in the linking:
 **to be generated**
@@ -36,7 +36,7 @@ This set of corrections included `2.cormtx` only, pixel size has not been determ
 
 ***Warning**: On 22/01/2024 pixel density was changed to `0.3455 -0.3462` from `0.345291 -0.345583`, it happened at plate 3_W4_B3_49 after the installation of Dispatcher on mic3, so plates scanned with `0.345291 -0.345583` pixel density are 3_W4_B3_31-3_W4_B3_49.
 
-Text files are stored on EOS: `/eos/experiment/sndlhc/emulsionData/2022/Napoli/CALIBRATIONS/mic3_24Nov23/corr_mtx_*_1.txt`
+Text files are stored on EOS: `/eos/experiment/sndlhc/emulsionData/Napoli/CALIBRATIONS/mic3_24Nov23/corr_mtx_*_1.txt`
 
 Matrices to be used in the linking:
 **to be generated**
@@ -52,7 +52,7 @@ This set of corrections have been performed after several changes to the mic3 st
 - MAgnetic frame installed
 For this set all kind of corrections have been made:
 - Pixel size measured is `0.34455265 -0.34519676`
-- Since this is a recent set of corrections we got the `mean_matrix.txt` already, they are stored in `Y:\corr_gen\mic3_4Apr24\2.cormtx\` and `txt` file in `/eos/experiment/sndlhc/emulsionData/2022/Napoli/CALIBRATIONS/mic3_4Apr24/mean_matrix.txt`
+- Since this is a recent set of corrections we got the `mean_matrix.txt` already, they are stored in `Y:\corr_gen\mic3_4Apr24\2.cormtx\` and `txt` file in `/eos/experiment/sndlhc/emulsionData/Napoli/CALIBRATIONS/mic3_4Apr24/mean_matrix.txt`
 
 Films scanned in this configuration:
 - RUN2_W3_B1 P[19-25]
@@ -60,7 +60,7 @@ Films scanned in this configuration:
 ### May 2024
 This set of corrections has been performed due to oil leaking onto the stage, this involved all kind of corrections:
 - Pixel size measured is: `0.344199486 -0.345760995`
-- Since this is a recent set of corrections we got the `mean_matrix.txt` already, they are stored in `Y:\corr_gen\mic3_8May24\2.cormtx\` and `txt` file in `/eos/experiment/sndlhc/emulsionData/2022/Napoli/CALIBRATIONS/mic3_8May24/mean_matrix.txt`
+- Since this is a recent set of corrections we got the `mean_matrix.txt` already, they are stored in `Y:\corr_gen\mic3_8May24\2.cormtx\` and `txt` file in `/eos/experiment/sndlhc/emulsionData/Napoli/CALIBRATIONS/mic3_8May24/mean_matrix.txt`
 
 Films scanned in this configuration:
 - RUN2_W3_B1 P03 and P11

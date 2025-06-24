@@ -43,14 +43,14 @@ cd $MY_DIR
 echo "makescanset $BRICKID.0.0.0"
 source scanset.sh $BRICKID
 
-cp align_2.rootrc align.rootrc
+cp alignR2.rootrc align.rootrc
 echo "align 2 $BRICKID.0.0.0"
 
 source align_set.sh $BRICKID
 echo "makescanset $BRICKID.0.0.0"
 source scanset.sh $BRICKID
 
-cp align_3.rootrc align.rootrc
+cp alignR1.rootrc align.rootrc
 echo "align 3 $BRICKID.0.0.0"
 source align_set.sh $BRICKID
 

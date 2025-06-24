@@ -8,7 +8,7 @@ Microscope 1 in CERN has undergone 3 different correction sets, so far (last upd
 mic1_cern_corrmtx_old/2.cormtx/bot_2
 
 Matrices to be used in the linking:
-`/eos/experiment/sndlhc/emulsionData/2022/CERN/CALIBRATIONS/mic1/diff_matrix_*_2021.txt`
+`/eos/experiment/sndlhc/emulsionData/CERN/CALIBRATIONS/mic1/diff_matrix_*_2021.txt`
 
 Films scanned with this configuration:
 - RUN1 W4 B1
@@ -22,7 +22,7 @@ Films scanned with this configuration:
 
 ### January 2024 corrections
 Matrices to be used in the linking:
-`/eos/experiment/sndlhc/emulsionData/2022/CERN/CALIBRATIONS/mic1/diff_matrix_*_Jan24.txt`
+`/eos/experiment/sndlhc/emulsionData/CERN/CALIBRATIONS/mic1/diff_matrix_*_Jan24.txt`
 
 Films scanned with this configuration:
 - RUN3 W5 B4 P1-28

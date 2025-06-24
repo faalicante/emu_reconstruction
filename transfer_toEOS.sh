@@ -1,7 +1,7 @@
 #!/bin/sh
 
 localdir=/drives/d/SND/RUN2/RUN2_W1_B3
-remotedir=/eos/experiment/sndlhc/emulsionData/2022/CERN/SND_mic2/RUN2/
+remotedir=/eos/experiment/sndlhc/emulsionData/CERN/SND_mic2/RUN2/
 currdate=$(date +"%Y%m%d_%s")
 cryptedfile=/drives/d/snd2cern.txt.gpg
 

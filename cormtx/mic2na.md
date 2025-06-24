@@ -6,7 +6,7 @@ Microscope 2 in Naples has undergone 3 different correction sets, so far (last u
 
 ### July 2021 corrections
 Matrices to be used in the linking:
-`/eos/experiment/sndlhc/emulsionData/2022/Napoli/CALIBRATIONS/mic2/diff_matrix_*_2021.txt`
+`/eos/experiment/sndlhc/emulsionData/Napoli/CALIBRATIONS/mic2/diff_matrix_*_2021.txt`
 
 Films scanned with this configuration:
 - RUN1 W2 B1
@@ -16,7 +16,7 @@ Films scanned with this configuration:
 
 ### January 2024 corrections
 Matrices to be used in the linking:
-`/eos/experiment/sndlhc/emulsionData/2022/Napoli/CALIBRATIONS/mic2/diff_matrix_*_Jan24.txt`
+`/eos/experiment/sndlhc/emulsionData/Napoli/CALIBRATIONS/mic2/diff_matrix_*_Jan24.txt`
 
 Films scanned with this configuration:
 - RUN3 W3 B1 P36-57 (no 51, 56 rescan)

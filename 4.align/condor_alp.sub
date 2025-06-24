@@ -1,7 +1,7 @@
 executable = condor_alp.sh
 RUN = 
 BRICK = 
-EXP_DIR = /eos/experiment/sndlhc/emulsionData/2022/emureco_CERN
+EXP_DIR = /eos/experiment/sndlhc/emulsionData/emureco_CERN
 BRICKFOLDER = b$INT(BRICK,%06d)
 PLATEFOLDER = p$INT(PLATENUMBER,%03d)
 X = ($(CELL) % 18 + 1)
