@@ -4,9 +4,10 @@ BRICKFOLDER="$(printf "b%0*d" 6 $BRICKID)"
 script_dir=/afs/cern.ch/work/f/falicant/public/emu_reconstruction
 target_dir=$BRICKFOLDER
 
-mkdir -p $target_dir/
-mkdir -p $target_dir/AFF
-mkdir -p $target_dir/report/tal
+mkdir $target_dir/
+mkdir $target_dir/AFF
+mkdir $target_dir/report/tal
+mkdir $target_dir/report/mos
 
 cp $script_dir/create_link.sh $target_dir
 cp $script_dir/scanset.sh $target_dir
