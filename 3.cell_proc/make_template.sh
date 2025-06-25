@@ -24,3 +24,7 @@ for PLATENUMBER in $(seq 1 57);do
     mkdir $template_dir/$PLATEFOLDER
     cp -a $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$template_dir/$PLATEFOLDER
 done
+cd $template_dir
+
+echo "makescanset $BRICKID.0.0.0"
+source scanset.sh $BRICKID
