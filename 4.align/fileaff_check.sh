@@ -2,7 +2,7 @@
 
 BRICKID=$1
 BRICKFOLDER="$(printf "b%0*d" 6 $BRICKID)"
-for CELL in $(seq 1 323); do
+for CELL in $(seq 0 323); do
 	xcell=$((CELL % 18 + 1))
 	ycell=$((CELL / 18 + 1))
 	folder=cell_${xcell}0_${ycell}0/$BRICKFOLDER/AFF
