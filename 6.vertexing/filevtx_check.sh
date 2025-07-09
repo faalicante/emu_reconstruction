@@ -2,6 +2,7 @@
 
 BRICKID=$1
 BRICKFOLDER="$(printf "b%0*d" 6 $BRICKID)"
+counter=0
 for CELL in $(seq 0 323); do
     xcell=$((CELL % 18 + 1))
     ycell=$((CELL / 18 + 1))
@@ -14,7 +15,7 @@ for CELL in $(seq 0 323); do
     if [ -f "$file_vtx" ]; then
         mv "$file_vtx" "$dest_base.vtx.root"
         mv "$file_vtxr" "$dest_base.vtx.refit.root"
-    else
-        echo "$CELL"
+        ((counter ++))
     fi
 done
+echo "$counter vtx files"
