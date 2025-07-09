@@ -1,6 +1,7 @@
-TCanvas *check_t(const char *name="tr")
+TCanvas *check_t(int brick, int cellx, int celly)
 {
-  TTree *tr_tree = (TTree*)(gDirectory->Get("tracks"));
+  TFile *f = TFile::Open(Form("cell_%i0_%i0/b%06i/b%06i.0.0.0.trk.root", cellx, celly, brick, brick), "READ");
+  TTree *tr_tree = (TTree*)f->Get("tracks");
   tr_tree->SetAlias("npl0","(s[nseg-1].eScanID.ePlate-s[0].eScanID.ePlate+1)");
   tr_tree->SetAlias("dx","(s[nseg-1].eX-s[0].eX)");
   tr_tree->SetAlias("dy","(s[nseg-1].eY-s[0].eY)");
@@ -65,6 +66,15 @@ TCanvas *check_t(const char *name="tr")
   t->SetTextSize(0.015);
   t->DrawText(0.25,0.0001, Form("%s/%s    %s",gSystem->WorkingDirectory(),tr_tree->GetCurrentFile()->GetName(),time.AsString()) );
 
-  if(gROOT->IsBatch()) c->SaveAs(Form("%s.png",name));
+  if(gROOT->IsBatch()) c->SaveAs(Form("report_trk/%i0_%i0.png",cellx, celly));
   return c;
+}
+
+void check_trk(int brick)
+{
+  for (int celly = 1; celly <= 18; celly++){
+    for(int cellx = 1; cellx <= 18; cellx++){  
+      check_t(brick, cellx, celly);
+    }
+  } 
 }

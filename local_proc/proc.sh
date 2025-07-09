@@ -2,7 +2,7 @@ export brick=$1
 do_plate=1
 do_align=1
 do_track=1
-do_vertex=1
+do_vertex=0
 
 if [ $do_plate == 1 ]
 then
