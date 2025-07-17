@@ -1,5 +1,6 @@
 BRICKID=$1
 BRICKFOLDER="$(printf "b%0*d" 6 $BRICKID)"
+mkdir report_trk
 for CELL in $(seq 0 323); do
   xcell=$(((CELL % 18 + 1) * 10))
   ycell=$(((CELL / 18 + 1) * 10))
