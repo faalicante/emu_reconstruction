@@ -23,6 +23,6 @@ requirements = TARGET.HEPSPEC_PER_CORE =!= UNDEFINED
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
-on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0) && fileExists("$(BRICKFOLDER).0.$INT(X).$INT(Y).trk.root"))
+on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0))
 max_retries             = 3
 queue CELL from cells.dat

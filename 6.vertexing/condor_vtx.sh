@@ -27,8 +27,10 @@ cd $MAIN_DIR
 MY_DIR=${CELL}/$BRICKFOLDER
 mkdir -p $MY_DIR
 ln -s $EXP_DIR/vertexing.sh ./$MY_DIR
+ln -s $EXP_DIR/discard.sh ./$MY_DIR
 ln -s $EXP_DIR/edipoda.sh ./$MY_DIR
-ln -s $EXP_DIR/vertex.rootrc ./$MY_DIR
+ln -s $EXP_DIR/vertex_disc.rootrc ./$MY_DIR/vertex.rootrc
+ln -s $EXP_DIR/vertex_edi.rootrc ./$MY_DIR
 ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
 ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.trk.root ./$MY_DIR
 
@@ -37,8 +39,13 @@ cd $MY_DIR
 echo "emvertex $BRICKID.0.0.0"
 source vertexing.sh $BRICKID
 
+echo "discard high ip track $BRICKID.0.0.0"
+source discard.sh $BRICKID
+
+ln -s -f $BRICKFOLDER.0.0.0.vtx.discimp.root $BRICKFOLDER.0.0.0.vtx.root
+cp -a vertex_edi.rootrc vertex.rootrc
+
 echo "find track $BRICKID.0.0.0"
 source edipoda.sh $BRICKID
 
-cp $BRICKFOLDER.0.0.0.vtx.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.root
-cp $BRICKFOLDER.0.0.0.vtx.refit.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.refit.root
+cp b000021.0.0.0.vtx.refit.root $MAIN_DIR/b000021.0.$xcell.$ycell.vtx.refit.root

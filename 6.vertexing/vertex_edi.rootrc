@@ -7,7 +7,7 @@ emvertex.vtx.QualityMode:                0
 emvertex.vtx.cutvtx:                     (flag==0||flag==1)&&n>2
 emvertex.vtx.cuttr:                      nseg>4&&npl<53
 emvertex.addtr.doit:                     1
-emvertex.addtr.cuttr:                    nseg>3
+emvertex.addtr.cuttr:                    nseg>20
 emvertex.trfit.doit:                     0
 emvertex.trfit.P:                        10
 emvertex.trfit.M:                        0.139
@@ -15,3 +15,4 @@ emvertex.trfit.r2max:                    3
 emvertex.trfit.dzmax:                    5000
 emvertex.bt.Sigma0:                      1 1 0.0015 0.0015
 emvertex.bt.Degrad:                      100
+emvertex.vtx.discimp:                    0
