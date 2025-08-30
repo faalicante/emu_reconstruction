@@ -17,7 +17,7 @@ SNDBUILD_DIR=/afs/cern.ch/work/s/snd2na/public/SNDBUILD/sw
 source /cvmfs/sndlhc.cern.ch/SNDLHC-2023/Aug30/setUp.sh
 eval `alienv load -w $SNDBUILD_DIR --no-refresh sndsw/latest`
 echo "Loading FEDRA"
-source /afs/cern.ch/work/s/snd2na/public/fedra/setup_new.sh
+source /afs/cern.ch/work/f/falicant/public/fedra/setup_new.sh
 
 export LD_PRELOAD=/cvmfs/sndlhc.cern.ch/SNDLHC-2023/Aug30/sw/slc9_x86-64/XRootD/latest/lib/libXrdPosixPreload.so
 export XROOTD_VMP=eospublic.cern.ch:/eos=/eos
@@ -42,10 +42,13 @@ source vertexing.sh $BRICKID
 echo "discard high ip track $BRICKID.0.0.0"
 source discard.sh $BRICKID
 
+cp $BRICKFOLDER.0.0.0.vtx.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.root
+cp $BRICKFOLDER.0.0.0.vtx.discimp.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.discimp.root
+
 ln -s -f $BRICKFOLDER.0.0.0.vtx.discimp.root $BRICKFOLDER.0.0.0.vtx.root
 cp -a vertex_edi.rootrc vertex.rootrc
 
 echo "find track $BRICKID.0.0.0"
 source edipoda.sh $BRICKID
 
-cp b000021.0.0.0.vtx.refit.root $MAIN_DIR/b000021.0.$xcell.$ycell.vtx.refit.root
+cp $BRICKFOLDER.0.0.0.vtx.refit.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.refit.root
