@@ -9,7 +9,7 @@ for CELL in $(seq 0 323); do
 	for p in $(seq 1 56); do
 		base=$BRICKID.$((p+1)).0.0_$BRICKID.$p
 		file_aff=$base.$xcell.$ycell.aff.par
-		file_al=$base.$xcell.$ycell.aff.par
+		file_al=$base.$xcell.$ycell.al.root
 		if [ -f "$folder/$file_al" ]; then
    		    mv $folder/$file_aff $folder/$base.0.0.aff.par
 		    mv $folder/$file_al $folder/$base.0.0.al.root
