@@ -6,8 +6,8 @@ target_dir=$BRICKFOLDER
 
 mkdir $target_dir/
 mkdir $target_dir/AFF
-mkdir $target_dir/report/tal
-mkdir $target_dir/report/mos
+mkdir -p $target_dir/report/tal
+mkdir -p $target_dir/report/mos
 
 cp $script_dir/create_link.sh $target_dir
 cp $script_dir/scanset.sh $target_dir

@@ -16,12 +16,12 @@ EXP_DIR=$EXP_PRE/RUN$RUN/$BRICKFOLDER/cells/$CELLFOLDER/$BRICKFOLDER
 
 echo "Set up SND environment"
 SNDBUILD_DIR=/afs/cern.ch/user/s/snd2cern/public/SNDBUILD/sw
-source /cvmfs/sndlhc.cern.ch/SNDLHC-2023/Aug30/setUp.sh
+source /cvmfs/sndlhc.cern.ch/SNDLHC-2025/Oct7/setUp.sh
 eval `alienv load -w $SNDBUILD_DIR --no-refresh sndsw/latest`
 echo "Loading FEDRA"
 source /afs/cern.ch/user/s/snd2cern/public/fedra/setup_new.sh
 
-export LD_PRELOAD=/cvmfs/sndlhc.cern.ch/SNDLHC-2023/Aug30/sw/slc9_x86-64/XRootD/latest/lib/libXrdPosixPreload.so
+export LD_PRELOAD=/cvmfs/sndlhc.cern.ch/SNDLHC-2025/Oct7/sw/slc9_x86-64/XRootD/latest/lib/libXrdPosixPreload.so
 export XROOTD_VMP=eospublic.cern.ch:/eos=/eos
 
 MAIN_DIR=$PWD
