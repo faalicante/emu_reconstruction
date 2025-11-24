@@ -26,15 +26,15 @@ MAIN_DIR=$PWD
 cd $MAIN_DIR
 MY_DIR=${CELL}/$BRICKFOLDER
 mkdir -p $MY_DIR
-ln -s $EXP_DIR/vertexing.sh ./$MY_DIR
-ln -s $EXP_DIR/discard.sh ./$MY_DIR
-ln -s $EXP_DIR/edipoda.sh ./$MY_DIR
-ln -s $EXP_DIR/vertex_disc.rootrc ./$MY_DIR/vertex.rootrc
-ln -s $EXP_DIR/vertex_edi.rootrc ./$MY_DIR
-ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
-ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.trk.root ./$MY_DIR
-
 cd $MY_DIR
+
+ln -s $EXP_DIR/vertexing.sh .
+ln -s $EXP_DIR/discard.sh .
+ln -s $EXP_DIR/edipoda.sh .
+ln -s $EXP_DIR/vertex_disc.rootrc ./vertex.rootrc
+ln -s $EXP_DIR/vertex_edi.rootrc .
+ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root .
+ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.trk.root .
 
 echo "emvertex $BRICKID.0.0.0"
 source vertexing.sh $BRICKID
@@ -42,13 +42,13 @@ source vertexing.sh $BRICKID
 echo "discard high ip track $BRICKID.0.0.0"
 source discard.sh $BRICKID
 
-cp $BRICKFOLDER.0.0.0.vtx.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.root
-cp $BRICKFOLDER.0.0.0.vtx.discimp.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.discimp.root
+mv $BRICKFOLDER.0.0.0.vtx.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.root
+mv $BRICKFOLDER.0.0.0.vtx.discimp.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.discimp.root
 
 ln -s -f $BRICKFOLDER.0.0.0.vtx.discimp.root $BRICKFOLDER.0.0.0.vtx.root
-cp -a vertex_edi.rootrc vertex.rootrc
+mv -a vertex_edi.rootrc vertex.rootrc
 
 echo "find track $BRICKID.0.0.0"
 source edipoda.sh $BRICKID
 
-cp $BRICKFOLDER.0.0.0.vtx.refit.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.refit.root
+mv $BRICKFOLDER.0.0.0.vtx.refit.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.refit.root

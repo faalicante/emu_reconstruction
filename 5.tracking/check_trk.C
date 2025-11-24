@@ -1,6 +1,7 @@
-TCanvas *check_t(int brick, int cellx, int celly)
+void check_t(int brick, int cellx, int celly)
 {
   TFile *f = TFile::Open(Form("cell_%i0_%i0/b%06i/b%06i.0.0.0.trk.root", cellx, celly, brick, brick), "READ");
+  if (!f) return;
   TTree *tr_tree = (TTree*)f->Get("tracks");
   tr_tree->SetAlias("npl0","(s[nseg-1].eScanID.ePlate-s[0].eScanID.ePlate+1)");
   tr_tree->SetAlias("dx","(s[nseg-1].eX-s[0].eX)");
@@ -13,11 +14,7 @@ TCanvas *check_t(int brick, int cellx, int celly)
   TCut ctr("ctr","npl0>53");
   TCut ctheta("ctheta","t.Theta()<0.005");
 
-  TCanvas *c=0;
-  if(gROOT->IsBatch())
-    c = new TCanvas("t",Form("check tracks in %s", gSystem->WorkingDirectory()),1600,800);
-  else
-    c = new TCanvas("t",Form("check tracks in %s", gSystem->WorkingDirectory()),1600,800);
+  TCanvas *c = new TCanvas(Form("t_%i_%i", cellx, celly),Form("check tracks in cell_%i_%i", cellx, celly),1600,800);
 
   c->Divide(5,2);
 
@@ -67,7 +64,7 @@ TCanvas *check_t(int brick, int cellx, int celly)
   t->DrawText(0.25,0.0001, Form("%s/%s    %s",gSystem->WorkingDirectory(),tr_tree->GetCurrentFile()->GetName(),time.AsString()) );
 
   if(gROOT->IsBatch()) c->SaveAs(Form("report_trk/%i0_%i0.png",cellx, celly));
-  return c;
+  f->Close();
 }
 
 void check_trk(int brick)

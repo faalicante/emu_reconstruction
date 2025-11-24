@@ -24,15 +24,13 @@ MAIN_DIR=$PWD
 cd $MAIN_DIR
 MY_DIR=$PLATENUMBER/$BRICKFOLDER
 mkdir -p -v ./$MY_DIR/$PLATEFOLDER
-
-ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEFOLDER
-ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
-ln -s $EXP_DIR/viewsideal.sh ./$MY_DIR
-ln -s $EXP_DIR/viewsideal.rootrc ./$MY_DIR
-ln -s $EXP_DIR/mostag.sh ./$MY_DIR
-
-
 cd $MY_DIR
+
+ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$PLATEFOLDER
+ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root .
+ln -s $EXP_DIR/viewsideal.sh .
+ln -s $EXP_DIR/viewsideal.rootrc .
+ln -s $EXP_DIR/mostag.sh .
 
 echo "viewsideal $BRICKID.$PLATENUMBER.0.0"
 source viewsideal.sh $BRICKID $PLATENUMBER
@@ -40,5 +38,5 @@ source viewsideal.sh $BRICKID $PLATENUMBER
 echo "mostag $BRICKID.$PLATENUMBER.0.0"
 source mostag.sh $BRICKID $PLATENUMBER
 
-cp $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/
-cp $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.tag.root $MAIN_DIR/
+mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/
+mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.tag.root $MAIN_DIR/

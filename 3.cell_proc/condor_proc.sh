@@ -28,16 +28,16 @@ MAIN_DIR=$PWD
 cd $MAIN_DIR
 MY_DIR=${CELL}_${PLATENUMBER}/$BRICKFOLDER
 mkdir -p -v ./$MY_DIR/$PLATEFOLDER
-
-ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$MY_DIR/$PLATEFOLDER
-ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root ./$MY_DIR
-ln -s $EXP_DIR/viewsideal.rootrc ./$MY_DIR
-ln -s $EXP_DIR/viewsideal.sh ./$MY_DIR
-ln -s $EXP_DIR/mosalignbeam.sh ./$MY_DIR
-ln -s $EXP_DIR/moslink.sh ./$MY_DIR
-ln -s $EXP_DIR/mosmerge.sh ./$MY_DIR
-
 cd $MY_DIR
+
+ln -s $EXP_DIR/$PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.raw.root ./$PLATEFOLDER
+ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root .
+ln -s $EXP_DIR/viewsideal.rootrc ./viewsideal.rootrc
+ln -s $EXP_DIR/viewsideal.sh .
+ln -s $EXP_DIR/mosalignbeam.sh .
+ln -s $EXP_DIR/moslink.sh .
+ln -s $EXP_DIR/mosmerge.sh .
+
 
 echo "viewsideal $BRICKID.$PLATENUMBER.0.0"
 source viewsideal.sh $BRICKID $PLATENUMBER
@@ -51,5 +51,5 @@ source moslink.sh $BRICKID $PLATENUMBER
 echo "moslink merge $BRICKID.$PLATENUMBER.0.0"
 source mosmerge.sh $BRICKID $PLATENUMBER
 
-cp $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.mos.root
-cp $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.cp.root
+mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.mos.root
+mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.cp.root

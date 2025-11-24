@@ -9,8 +9,8 @@ fedra.vsa.ImageMatrixCorrSide2:          #matrix bot
 fedra.vsa.offsetMax:                     100
 fedra.vsa.DZ:                            0
 fedra.vsa.DPHI:                          0
-fedra.vsa.Xfrag:                         20000
-fedra.vsa.Yfrag:                         20000
+fedra.vsa.Xfrag:                         10000
+fedra.vsa.Yfrag:                         10000
 fedra.vsa.AFID:                          1
 fedra.vsa.MinPeak:                       20
 fedra.vsa.HeaderCut:                     abs(eXview-90000)<8500&&abs(eYview-90000)<8500
