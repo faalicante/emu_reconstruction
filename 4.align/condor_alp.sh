@@ -44,8 +44,7 @@ ln -s $EXP_DIR/scanset.sh .
 ln -s $EXP_DIR/alignplate.sh .
 ln -s $EXP_DIR/align*.rootrc .
 
-cp $BRICKID.$PLATENEXT.0.0_$BRICKID.$PLATENUMBER.0.0.aff.par ./AFF
-
+cp $MAIN_DIR/$BRICKID.$PLATENEXT.0.0_$BRICKID.$PLATENUMBER.0.0.aff.par ./AFF
 
 echo "makescanset $BRICKID.0.0.0"
 source scanset.sh $BRICKID
