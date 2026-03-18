@@ -1,4 +1,6 @@
-const int brick = 124; //insert brick
+const int RUN = 1;
+const int brick = 142;
+const char *lab = "CERN";
 
 void draw_canvas(const char *name, const char *canvas, const char *out) {
     TFile *f = new TFile( name );
@@ -11,9 +13,9 @@ void draw_canvas(const char *name, const char *canvas, const char *out) {
 }
 
 void check_cell(int cellx, int celly, int plate) {
-    TString prepath = TString("/eos/experiment/sndlhc/emulsionData/emureco_CERN/RUN3");
+    TString prepath = TString(Form("/eos/experiment/sndlhc/emulsionData/emureco_%s/RUN%d", lab , RUN));
     TString path = TString(Form(prepath+"/b%06i/cells/cell_%i0_%i0/b%06i", brick, cellx, celly, brick));
-    TString plotpath = TString("/eos/user/f/falicant/RUN3/brick12/report_plate");
+    TString plotpath = TString(Form("/eos/user/f/falicant/RUN%d/brick%d/report_plate", RUN, brick));
     gStyle->SetOptStat("n");
     
     TFile *fmos = TFile::Open(Form(path+"/p%03i/%i.%i.0.0.mos.root", plate, brick, plate), "READ");
@@ -51,4 +53,10 @@ void check_cell(int cellx, int celly, int plate) {
 
     if (plate < 57) draw_canvas(Form(path+"/AFF/%d.%d.0.0_%d.%d.0.0.al.root", brick, plate+1, brick, plate), "report_al", Form(plotpath+"/al_%i_%i_%i.png",cellx, celly, plate));
     else draw_canvas(Form(path+"/AFF/%d.%d.0.0_%d.%d.0.0.al.root", brick, plate, brick, plate-1), "report_al", Form(plotpath+"/al_%i_%i_%i.png",cellx, celly, plate));
+}
+
+void check_plates(int cellx, int celly, int firstplate, int lastplate) {
+    for (int plate = firstplate; plate <= lastplate; plate++) {
+        check_cell(cellx, celly, plate);
+    }
 }
