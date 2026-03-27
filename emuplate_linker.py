@@ -2,6 +2,23 @@ import os
 import sys
 import re
 from collections import defaultdict
+"""
+Usage:
+  
+   python emuplate_linker.py -m <mic> -b <rwb> -lab <CR or NA> -r /path/to/rescan/file/ -o /path/to/reco/folder
+
+Example:
+   
+   python emuplate_linker.py -m 3 -b 554 -lab CR -r rescans_554 -o /eos/experiment/sndlhc/emulsionData/emureco_CERN/RUN5/
+
+File rescans_554 is:
+2 1
+15 1
+41 3
+42 1
+43 1
+"""
+
 
 def modify_line_in_file(file_path, line_number, new_content):
     try:
