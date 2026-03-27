@@ -17,7 +17,6 @@ SNDBUILD_DIR=/afs/cern.ch/work/s/snd2na/public/SNDBUILD/sw
 source /cvmfs/sndlhc.cern.ch/SNDLHC-2023/Aug30/setUp.sh
 eval `alienv load -w $SNDBUILD_DIR --no-refresh sndsw/latest`
 echo "Loading FEDRA"
-34
 
 export LD_PRELOAD=/cvmfs/sndlhc.cern.ch/SNDLHC-2023/Aug30/sw/slc9_x86-64/XRootD/latest/lib/libXrdPosixPreload.so
 export XROOTD_VMP=eospublic.cern.ch:/eos=/eos
