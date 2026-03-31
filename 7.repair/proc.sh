@@ -1,7 +1,7 @@
 export brick=$1
-do_plate=1
+do_plate=0
 do_align=1
-do_track=1
+do_track=0
 do_vertex=0
 
 if [ $do_plate == 1 ]
@@ -19,17 +19,36 @@ fi
 if [ $do_align == 1 ]
 then
     makescanset -set=${brick}.0.0.0 -dz=-1350 -from_plate=57 -to_plate=1 -dzbase=195 > out/${brick}.0.0.0.mks_al.txt 2>&1
-    cp alignR2.rootrc align.rootrc
-    seq 1 56 | xargs -i -P 8 bash -c \
-	'export al2f="out/${brick}.{}.0.0.al2.txt";  echo ${al2f}; date > ${al2f}; cat align.rootrc >> ${al2f}; \
- . ./alignplate.sh ${brick} {} >> ${al2f} 2>&1'
+    cp align_1.rootrc align.rootrc
+    seq 28 32 | xargs -i -P 8 bash -c \
+	'export al2f="out/${brick}.{}.0.0.al1.txt";  echo ${al2f}; date > ${al2f}; cat align.rootrc >> ${al2f}; \
+ . ./alignplate.sh ${brick} {} 1 >> ${al2f} 2>&1'
+    makescanset -set=${brick}.0.0.0 -from_plate=57 -to_plate=1 -dzbase=195 > out/${brick}.0.0.0.mks_R2.txt 2>&1
+    seq 28 32 | xargs -i -P 8 bash -c \
+	'export al2f="out/${brick}.{}.0.0.al1.txt";  echo ${al2f}; date > ${al2f}; cat align.rootrc >> ${al2f}; \
+ . ./alignplate.sh ${brick} {} 1 >> ${al2f} 2>&1'
     makescanset -set=${brick}.0.0.0 -from_plate=57 -to_plate=1 -dzbase=195 > out/${brick}.0.0.0.mks_R2.txt 2>&1
 
-    cp alignR1.rootrc align.rootrc
-    seq 1 56 | xargs -i -P 8 bash -c \
-	'export al1f="out/${brick}.{}.0.0.al1.txt"; echo ${al1f}; date > ${al1f}; cat align.rootrc >> ${al1f}; \
- . ./alignplate.sh ${brick} {} >> ${al1f} 2>&1'
-    makescanset -set=${brick}.0.0.0 -from_plate=57 -to_plate=1 -dzbase=195 > out/${brick}.0.0.0.mks_R1.txt 2>&1
+    cp align_2.rootrc align.rootrc
+    seq 28 32 | xargs -i -P 8 bash -c \
+	'export al2f="out/${brick}.{}.0.0.al2.txt";  echo ${al2f}; date > ${al2f}; cat align.rootrc >> ${al2f}; \
+ . ./alignplate.sh ${brick} {} 1 >> ${al2f} 2>&1'
+    makescanset -set=${brick}.0.0.0 -from_plate=57 -to_plate=1 -dzbase=195 > out/${brick}.0.0.0.mks_R2.txt 2>&1
+    seq 28 32 | xargs -i -P 8 bash -c \
+	'export al2f="out/${brick}.{}.0.0.al2.txt";  echo ${al2f}; date > ${al2f}; cat align.rootrc >> ${al2f}; \
+ . ./alignplate.sh ${brick} {} 1 >> ${al2f} 2>&1'
+    makescanset -set=${brick}.0.0.0 -from_plate=57 -to_plate=1 -dzbase=195 > out/${brick}.0.0.0.mks_R2.txt 2>&1
+
+    cp align_3.rootrc align.rootrc
+    seq 28 32 | xargs -i -P 8 bash -c \
+	'export al2f="out/${brick}.{}.0.0.al3.txt";  echo ${al2f}; date > ${al2f}; cat align.rootrc >> ${al2f}; \
+ . ./alignplate.sh ${brick} {} 1 >> ${al2f} 2>&1'
+    makescanset -set=${brick}.0.0.0 -from_plate=57 -to_plate=1 -dzbase=195 > out/${brick}.0.0.0.mks_R2.txt 2>&1
+    seq 28 32 | xargs -i -P 8 bash -c \
+	'export al2f="out/${brick}.{}.0.0.al3.txt";  echo ${al2f}; date > ${al2f}; cat align.rootrc >> ${al2f}; \
+ . ./alignplate.sh ${brick} {} 1 >> ${al2f} 2>&1'
+    makescanset -set=${brick}.0.0.0 -from_plate=57 -to_plate=1 -dzbase=195 > out/${brick}.0.0.0.mks_R2.txt 2>&1
+
 fi
 
 if [ $do_track == 1 ]
