@@ -16,8 +16,10 @@ cp $script_dir/4.align/alignplate.sh $template_dir
 cp $script_dir/4.align/align*.rootrc $template_dir
 cp $script_dir/5.tracking/tracking_all.sh $template_dir
 cp $script_dir/5.tracking/*.rootrc $template_dir
-cp $script_dir/6.vertexing/vertex.rootrc $template_dir
+cp $script_dir/6.vertexing/vertex_disc.rootrc $template_dir
+cp $script_dir/6.vertexing/vertex_edi.rootrc $template_dir
 cp $script_dir/6.vertexing/vertexing.sh $template_dir
+cp $script_dir/6.vertexing/discard.sh $template_dir
 cp $script_dir/6.vertexing/edipoda.sh $template_dir
 for PLATENUMBER in $(seq 1 57);do
     PLATEFOLDER="$(printf "p%0*d" 3 $PLATENUMBER)"
