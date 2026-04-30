@@ -26,6 +26,7 @@ case "$OPT" in
     ;;
   proc)
     cp $script_dir/3.cell_proc/condor_* $FOLDER
+    cp $script_dir/3.cell_proc/create_dat.py $FOLDER
     cp $script_dir/4.align/condor_* $FOLDER
     ;;
   trk)
