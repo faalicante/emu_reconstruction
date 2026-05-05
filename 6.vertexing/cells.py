@@ -1,7 +1,7 @@
 with open("cells.txt", "r") as file:
     lines = file.readlines()
 
-with open("output.txt", "w") as output:
+with open("cells.dat", "w") as output:
     for line in lines:
         line = line.strip()
         x_str, y_str = line.split("_")
