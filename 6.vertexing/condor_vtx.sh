@@ -46,7 +46,7 @@ cp $BRICKFOLDER.0.0.0.vtx.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.root
 cp $BRICKFOLDER.0.0.0.vtx.discimp.root $MAIN_DIR/$BRICKFOLDER.0.$xcell.$ycell.vtx.discimp.root
 
 ln -s -f $BRICKFOLDER.0.0.0.vtx.discimp.root $BRICKFOLDER.0.0.0.vtx.root
-mv -a vertex_edi.rootrc vertex.rootrc
+cp -a vertex_edi.rootrc vertex.rootrc
 
 echo "find track $BRICKID.0.0.0"
 source edipoda.sh $BRICKID
