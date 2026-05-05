@@ -16,7 +16,7 @@ output_destination=root://eospublic.cern.ch/$(EXP_DIR)/RUN$(RUN)/$(BRICKFOLDER)/
 transfer_output_files=$(BRICKFOLDER).0.$INT(X).$INT(Y).vtx.root, $(BRICKFOLDER).0.$INT(X).$INT(Y).vtx.discimp.root, $(BRICKFOLDER).0.$INT(X).$INT(Y).vtx.refit.root
 should_transfer_files = yes
 
-+JobFlavour = "workday"
++JobFlavour = "tomorrow"
 request_memory = 12GB
 +HEPSPEC_PER_CORE = 10
 requirements = TARGET.HEPSPEC_PER_CORE =!= UNDEFINED
