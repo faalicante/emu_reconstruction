@@ -32,6 +32,10 @@ case "$OPT" in
   trk)
     cp $script_dir/5.tracking/condor_* $FOLDER
     ;;
+  vtx)
+    cp $script_dir/6.vertexing/condor_* $FOLDER
+    cp $script_dir/6.vertexing/cells.py $FOLDER
+    ;;
   *)
     echo "Unknown option: $OPT"
     exit 1
