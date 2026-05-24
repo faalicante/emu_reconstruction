@@ -1,4 +1,4 @@
-void check_t(int brick, int cellx, int celly)
+void check_trk(int brick, int cellx, int celly)
 {
   TFile *f = TFile::Open(Form("cell_%i0_%i0/b%06i/b%06i.0.0.0.trk.root", cellx, celly, brick, brick), "READ");
   if (!f) return;
@@ -67,11 +67,12 @@ void check_t(int brick, int cellx, int celly)
   f->Close();
 }
 
-void check_trk(int brick)
-{
-  for (int celly = 1; celly <= 18; celly++){
-    for(int cellx = 1; cellx <= 18; cellx++){  
-      check_t(brick, cellx, celly);
-    }
-  } 
-}
+// use this function to check all cells locally
+// void check_t(int brick)
+// {
+//   for (int celly = 1; celly <= 18; celly++){
+//     for(int cellx = 1; cellx <= 18; cellx++){  
+//       check_t(brick, cellx, celly);
+//     }
+//   } 
+// }
