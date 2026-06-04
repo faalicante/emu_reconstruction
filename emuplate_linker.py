@@ -152,6 +152,6 @@ if args.rescan_file:
 print('Preparing brick ..')
 print('Creating links ..')
 for plate, path in plate_files_dict.items():
-    os.system(f"ln -s -f {path} {args.destpath}/b{args.brickID:06d}/p{int(plate):03d}/{brickID}.{int(plate)}.0.0.0.cp.root")
+    os.system(f"ln -s -f {path} {args.destpath}/b{args.brickID:06d}/p{int(plate):03d}/{args.brickID}.{int(plate)}.0.0.raw.root")
 os.chdir(args.destpath)
 os.system(f'source /afs/cern.ch/work/f/falicant/public/emu_reconstruction/make_brick.sh {args.brickID}')
