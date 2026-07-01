@@ -66,13 +66,3 @@ void check_t(int brick, int cellx, int celly)
   if(gROOT->IsBatch()) c->SaveAs(Form("report_trk/%i0_%i0.png",cellx, celly));
   f->Close();
 }
-
-// use this function to check all cells locally
-void check_trk(int brick)
-{
-  for (int celly = 1; celly <= 18; celly++){
-    for(int cellx = 1; cellx <= 18; cellx++){  
-      check_t(brick, cellx, celly);
-    }
-  } 
-}
