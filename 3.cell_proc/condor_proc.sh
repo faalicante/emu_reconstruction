@@ -48,8 +48,5 @@ source mosalignbeam.sh $BRICKID $PLATENUMBER
 echo "moslink $BRICKID.$PLATENUMBER.0.0"
 source moslink.sh $BRICKID $PLATENUMBER
 
-echo "moslink merge $BRICKID.$PLATENUMBER.0.0"
-source mosmerge.sh $BRICKID $PLATENUMBER
-
 mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.mos.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.mos.root
 mv $PLATEFOLDER/$BRICKID.$PLATENUMBER.0.0.cp.root $MAIN_DIR/$BRICKID.$PLATENUMBER.$xcell.$ycell.cp.root
