@@ -7,13 +7,14 @@ BRICKPATH="/eos/experiment/sndlhc/emulsionData/emureco_Napoli/RUN1/b000121/cells
 for CELL in $(seq 0 323); do
     xcell=$((CELL % 18 + 1))
     ycell=$((CELL / 18 + 1))
-    folder=$BRICKPATH/cell_${xcell}0_${ycell}0/$BRICKFOLDER
+    folder=$BRICKPATH/cell_${xcell}0_${ycell}0/$BRICKFOLDER1
     if [ ! -d "$folder" ]; then
         echo "Folder $folder does not exist, skipping..."
         continue
     fi
+    echo $folder
     cd $folder
-    makescanset -set=$BRICK2.0.0.0 -copyset -A=$BRICK1.0.0.0
+    makescanset -set=$BRICKID2.0.0.0 -copyset -A=$BRICKID1.0.0.0
     rm ../$BRICKFOLDER2/p0*/*par
     for p in $(seq 1 57); do
         plate="$(printf "p%03d" $p)" 
