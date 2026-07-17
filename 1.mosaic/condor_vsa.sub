@@ -14,13 +14,23 @@ output_destination=root://eospublic.cern.ch/$(EXP_DIR)/RUN$(RUN)/$(BRICKFOLDER)/
 transfer_output_files=$(BRICK).$(PLATENUMBER).0.0.mos.root, $(BRICK).$(PLATENUMBER).0.0.tag.root
 should_transfer_files = yes
 
-+JobFlavour = "tomorrow"
-request_memory = 3GB
+# OMP BATCHED: adaptive batch size keeps RSS within actual slot RAM.
+# Script auto-detects actual CPUs (nproc) and RAM ($_CONDOR_MACHINE_AD).
+# Condor allocates ~3GB/CPU — whichever of RAM or CPUs is bigger drives the slot.
+# Kill limit = 2× request_memory.  With batch=CPUS + malloc_trim, RSS bounded.
+# 40GB → ~14 CPUs / 42GB slot, kill at 80GB.  batch=14, 5 batches/side.
+request_memory = 24GB
++JobFlavour = "workday"
+request_cpus = 8
+
 +HEPSPEC_PER_CORE = 10
 requirements = TARGET.HEPSPEC_PER_CORE =!= UNDEFINED
 notification = Never
 requirements = (OpSysAndVer =?= "AlmaLinux9")
 requirements = Machine =!= LastRemoteHost
-on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0) && fileExists("$(BRICK).$(PLATENUMBER).0.0.mos.root"))
+#on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0) && fileExists("$(BRICK).$(PLATENUMBER).0.0.mos.root"))
+#on_exit_remove          = (ExitBySignal == False) && ((ExitCode == 1) || (ExitCode == 0)) && fileExists("$(BRICK).$(PLATENUMBER).0.0.mos.root")
+on_exit_remove          = (ExitBySignal == False) && (ExitCode == 0) && fileExists("$(BRICK).$(PLATENUMBER).0.0.mos.root")
+
 max_retries             = 3
 queue PLATENUMBER from seq 1 57 |
