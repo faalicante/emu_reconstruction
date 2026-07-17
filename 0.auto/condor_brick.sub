@@ -1,0 +1,54 @@
+# condor_brick.sub
+# =============================================================================
+# Production single-plate FEDRA chain.
+# Submitted by watch_mosaic.sh via -a flags for each new plate.
+#
+# All I/O is handled by run_plate.sh via xrdcp — no Condor file transfer plugin.
+#
+# Args passed to run_plate.sh:
+#   $1=ClusterID  $2=BRICK  $3=BRICK_DIR  $4=PLATENUMBER  $5=IN_FILE  $6=RAW_MODE  $7=HEADERCUT
+# =============================================================================
+
+initialdir = /eos/experiment/sndlhc/users/vacharit/poller
+executable = run_plate.sh
+
+# Defaults (overridden by watch_mosaic.sh via -a flags at submit time)
+BRICK       = 413
+BRICK_DIR   = /eos/experiment/sndlhc/users/vacharit/bricks/RUN4/b000413
+PLATENUMBER = 5
+IN_FILE     = /eos/experiment/sndlhc/emulsionData/CERN/SND/RUN4/RUN4_W1_B3/P005/tracks.raw.root
+LOG_DIR     = /eos/experiment/sndlhc/users/vacharit/poller/log
+
+# Production: copy 48 GB raw to local scratch, full-area mosaic (no HeaderCut).
+RAW_MODE    = copy
+HEADERCUT   =
+
+# Job flavour controls the wall-time limit.  Override at submit time with:
+#   condor_submit -a JOBFLAVOUR=longlunch ...    (2 h — small plates with OMP)
+#   condor_submit -a JOBFLAVOUR=workday   ...    (8 h — normal plates, default)
+#   condor_submit -a JOBFLAVOUR=tomorrow  ...    (24 h — large rescans)
+JOBFLAVOUR  = workday
+
+arguments = $(ClusterID) $(BRICK) $(BRICK_DIR) $(PLATENUMBER) $(IN_FILE) $(RAW_MODE) $(HEADERCUT)
+
+output = $(LOG_DIR)/plate_$(ClusterId).out
+error  = $(LOG_DIR)/plate_$(ClusterId).err
+log    = $(LOG_DIR)/plate_$(ClusterId).log
+
+# All I/O via xrdcp inside the executable — no Condor file transfer needed.
+should_transfer_files = no
+
+# Full-plate mosaic: 48 GB raw copied to local scratch + FEDRA working files.
+request_cpus   = 8
+request_memory = 24 GB
+
++JobFlavour   = "$(JOBFLAVOUR)"
+
+requirements  = (OpSysAndVer =?= "AlmaLinux9")
+requirements  = Machine =!= LastRemoteHost
+notification  = Never
+
+on_exit_remove = (ExitBySignal == False) && (ExitCode == 0)
+max_retries    = 2
+
+queue
