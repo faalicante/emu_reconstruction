@@ -38,17 +38,22 @@ void check_cell(int cellx, int celly, int plate) {
         return;
     }
     
-    TCanvas *c = new TCanvas(Form("mos_cp_%i, %i, %d",cellx, celly, plate),Form("mosaic at pl %d",plate),1000,1000);
-    c->Divide(2,2);
+    TCanvas *c = new TCanvas(Form("mos_cp_%i, %i, %d",cellx, celly, plate),Form("mosaic at pl %d",plate),1000,1400);
+    c->Divide(2,3);
     c->cd(1);
     h1->Draw("colz");
     c->cd(2);
     h2->Draw("colz");
     c->cd(3);
-    couples->Draw("s.eY:s.eX","","colz");
+    couples->Draw("s.eY:s.eX","eCHI2P<1.8&&eN1==1&&eN2==1","colz");
     c->cd(4);
-    couples->Draw("s.eTY:s.eTX","abs(s.eTX)<0.1&&abs(s.eTY)<0.1","colz");
-    
+    couples->Draw("eCHI2P:s.eY:s.eX","eCHI2P<3","prof colz");
+    c->cd(5);
+    couples->Draw("s.eTY:s.eTX","abs(s.eTX)<0.025&&abs(s.eTY)<0.025","colz");
+    c->cd(6);
+    couples->Draw("eCHI2P>>h4(100,0,3)","","");
+    couples->Draw("eCHI2P","eN1==1&&eN2==1","same");
+
     c->SaveAs(Form(plotpath+"/mos_cp_%i_%i_%i.png", cellx, celly, plate));
 
     if (plate < 57) draw_canvas(Form(path+"/AFF/%d.%d.0.0_%d.%d.0.0.al.root", brick, plate+1, brick, plate), "report_al", Form(plotpath+"/al_%i_%i_%i.png",cellx, celly, plate));
