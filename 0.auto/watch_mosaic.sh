@@ -182,11 +182,11 @@ while IFS= read -r -d '' BRICK_DIR; do
     SRC_GB=$(awk "BEGIN {printf \"%.1f\", $SRC_SIZE / 1e9}")
     if awk "BEGIN {exit !($SRC_SIZE < 1e9)}"; then
       JOBFLAVOUR="espresso"
-    elif awk "BEGIN {exit !($SRC_SIZE < 10e9)}"; then
+    elif awk "BEGIN {exit !($SRC_SIZE < 7e9)}"; then
       JOBFLAVOUR="microcentury"
-    elif awk "BEGIN {exit !($SRC_SIZE < 20e9)}"; then
+    elif awk "BEGIN {exit !($SRC_SIZE < 15e9)}"; then
       JOBFLAVOUR="longlunch"
-    elif awk "BEGIN {exit !($SRC_SIZE < 40e9)}"; then
+    elif awk "BEGIN {exit !($SRC_SIZE < 60e9)}"; then
       JOBFLAVOUR="workday"
     else
       JOBFLAVOUR="tomorrow"
