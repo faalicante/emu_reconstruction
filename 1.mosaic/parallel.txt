@@ -1,0 +1,18 @@
+condor_q 8085369 8085370 8085371 8085372 8085376 8085377 8085378 8085379 8085381 8085382 \
+  -format "%d " ClusterId \
+  -format "%d " ProcId \
+  -format "%d CPUs " RequestCpus \
+  -format "%g MB " RequestMemory \
+  -format "%s\n" JobFlavour
+8085369 0 1 CPUs 3072 MB tomorrow
+8085369 1 1 CPUs 3072 MB tomorrow
+8085370 0 2 CPUs 6144 MB workday
+8085370 1 2 CPUs 6144 MB workday
+8085371 0 4 CPUs 12288 MB workday
+8085371 1 4 CPUs 12288 MB workday
+8085372 0 8 CPUs 24576 MB longlunch
+8085372 1 8 CPUs 24576 MB longlunch
+8085378 0 4 CPUs 12288 MB tomorrow
+8085379 0 8 CPUs 24576 MB tomorrow
+8085381 0 32 CPUs 98304 MB workday
+8085382 0 16 CPUs 49152 MB workday
