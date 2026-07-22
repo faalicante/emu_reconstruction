@@ -41,7 +41,10 @@ if [ $do_plate == 1 ]; then
     # printf '%s\n' "${plates[@]}" | xargs -i -P 8 bash -c 'echo vsa ${brick}.{}.0.0 && /usr/bin/time -v viewsideal -id=${brick}.{}.0.0 -v=1 > out/${brick}.{}.0.0.vsa.txt 2>&1'
     printf '%s\n' "${plates[@]}" | xargs -i -P 8 bash -c 'echo ab0 ${brick}.{}.0.0 && /usr/bin/time -v mosalignbeam -id=${brick}.{}.0.0 -v=1 > out/${brick}.{}.0.0.ab0.txt 2>&1'
     printf '%s\n' "${plates[@]}" | xargs -i -P 8 bash -c 'echo mln ${brick}.{}.0.0 && /usr/bin/time -v moslink -id=${brick}.{}.0.0 -v=2 > out/${brick}.{}.0.0.mln.txt 2>&1'
-    printf '%s\n' "${plates[@]}" | xargs -i -P 8 bash -c 'echo mlm ${brick}.{}.0.0 && /usr/bin/time -v moslink -id=${brick}.{}.0.0 -v=2 -merge > out/${brick}.{}.0.0.mlm.txt 2>&1'
+    for p in "${plates[@]}"; do
+        mv ${brick}.${p}.0.0.0.cp.root ${brick}.${p}.0.0.cp.root 
+    done
+
 fi
 
 if [ $do_align == 1 ]; then
@@ -63,13 +66,13 @@ if [ $do_align == 1 ]; then
 #  . ./alignplate.sh ${brick} {} 1 >> ${al2f} 2>&1'
 #     makescanset -set=${brick}.0.0.0 -from_plate=57 -to_plate=1 -dzbase=195 > out/${brick}.0.0.0.mks_R2.txt 2>&1
 
-    cp align_2.rootrc align.rootrc
+    cp alignR2.rootrc align.rootrc
     printf '%s\n' "${plates[@]}" | awk '{print $1; print $1 - 1}' | sort -n -u | xargs -i -P 8 bash -c \
 	'export al2f="out/${brick}.{}.0.0.al2.txt";  echo ${al2f}; date > ${al2f}; cat align.rootrc >> ${al2f}; \
  . ./alignplate.sh ${brick} {} 1 >> ${al2f} 2>&1'
     makescanset -set=${brick}.0.0.0 -from_plate=57 -to_plate=1 -dzbase=195 > out/${brick}.0.0.0.mks_R2.txt 2>&1
 
-    cp align_3.rootrc align.rootrc
+    cp alignR1.rootrc align.rootrc
     printf '%s\n' "${plates[@]}" | awk '{print $1; print $1 - 1}' | sort -n -u | xargs -i -P 8 bash -c \
 	'export al2f="out/${brick}.{}.0.0.al3.txt";  echo ${al2f}; date > ${al2f}; cat align.rootrc >> ${al2f}; \
  . ./alignplate.sh ${brick} {} 1 >> ${al2f} 2>&1'
