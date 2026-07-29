@@ -1,0 +1,4 @@
+JOB A condor_trk.sub
+JOB B condor_checkt.sub
+
+PARENT A CHILD B
