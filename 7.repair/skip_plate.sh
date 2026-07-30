@@ -47,11 +47,11 @@ xargs -P 8 -I {} bash -c '
 
     if [[ $type == pair ]]; then
         echo "second alignment $BRICKID $plate 3"
-        source alignplate.sh $BRICKID $plate 3
+        source alignplate.sh $BRICKID $plate 3 > out/${brick}.${plate}.3.0.al2.txt 2>&1\
 
     else
         echo "second alignment $BRICKID $plate 2"
-        source alignplate.sh $BRICKID $plate 2
+        source alignplate.sh $BRICKID $plate 2 > out/${brick}.${plate}.2.0.al2.txt 2>&1\
     fi
 ' _ "{}" "$BRICKID"
 
@@ -67,11 +67,11 @@ xargs -P 8 -I {} bash -c '
 
     if [[ $type == pair ]]; then
         echo "third alignment $BRICKID $plate 3"
-        source alignplate.sh $BRICKID $plate 3
+        source alignplate.sh $BRICKID $plate 3 > out/${brick}.${plate}.3.0.al3.txt 2>&1\
 
     else
         echo "third alignment $BRICKID $plate 2"
-        source alignplate.sh $BRICKID $plate 2
+        source alignplate.sh $BRICKID $plate 2 > out/${brick}.${plate}.2.0.al3.txt 2>&1\
     fi
 ' _ "{}" "$BRICKID"
 
