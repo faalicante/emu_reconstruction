@@ -10,15 +10,11 @@ cp -r AFF $template_dir
 cp viewsideal*.rootrc $template_dir
 cp $script_dir/scanset.sh $template_dir
 cp $script_dir/1.mosaic/viewsideal.sh $template_dir
-cp $script_dir/3.cell_proc/mos*.sh $template_dir
+cp $script_dir/3.cell_proc/mosalignbeam.* $template_dir
 cp $script_dir/3.cell_proc/make_volume.sh cells/
-cp $script_dir/4.align/alignplate.sh $template_dir
-cp $script_dir/4.align/align*.rootrc $template_dir
-cp $script_dir/5.tracking/tracking_all.sh $template_dir
-cp $script_dir/5.tracking/*.rootrc $template_dir
-cp $script_dir/6.vertexing/vertex_disc.rootrc $template_dir
-cp $script_dir/6.vertexing/vertex_edi.rootrc $template_dir
-cp $script_dir/6.vertexing/vertexing.sh $template_dir
+cp $script_dir/4.align/align* $template_dir
+cp $script_dir/5.tracking/track* $template_dir
+cp $script_dir/6.vertexing/vertex* $template_dir
 cp $script_dir/6.vertexing/discard.sh $template_dir
 cp $script_dir/6.vertexing/edipoda.sh $template_dir
 for PLATENUMBER in $(seq 1 57);do
