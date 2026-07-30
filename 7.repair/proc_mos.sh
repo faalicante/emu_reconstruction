@@ -40,7 +40,6 @@ fi
 if [ $do_plate == 1 ]; then
     # printf '%s\n' "${plates[@]}" | xargs -i -P 8 bash -c 'echo vsa ${brick}.{}.0.0 && /usr/bin/time -v viewsideal -id=${brick}.{}.0.0 -v=1 > out/${brick}.{}.0.0.vsa.txt 2>&1'
     printf '%s\n' "${plates[@]}" | xargs -i -P 8 bash -c 'echo ab0 ${brick}.{}.0.0 && /usr/bin/time -v mosalignbeam -id=${brick}.{}.0.0 -v=1 > out/${brick}.{}.0.0.ab0.txt 2>&1'
-    printf '%s\n' "${plates[@]}" | xargs -i -P 8 bash -c 'echo mln ${brick}.{}.0.0 && /usr/bin/time -v moslink -id=${brick}.{}.0.0 -v=2 > out/${brick}.{}.0.0.mln.txt 2>&1'
     for p in "${plates[@]}"; do
         mv ${brick}.${p}.0.0.0.cp.root ${brick}.${p}.0.0.cp.root 
     done
