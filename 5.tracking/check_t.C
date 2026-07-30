@@ -1,6 +1,6 @@
 void check_t(int brick, int cellx, int celly)
 {
-  TFile *f = TFile::Open(Form("cell_%i0_%i0/b%06i/b%06i.0.0.0.trk.root", cellx, celly, brick, brick), "READ");
+  TFile *f = TFile::Open(Form("cell_%i0_%i0/b%06i/b%06i.0.%i.%i.trk.root", cellx, celly, brick, brick, cellx, celly), "READ");
   if (!f) return;
   TTree *tr_tree = (TTree*)f->Get("tracks");
   tr_tree->SetAlias("npl0","(s[nseg-1].eScanID.ePlate-s[0].eScanID.ePlate+1)");
