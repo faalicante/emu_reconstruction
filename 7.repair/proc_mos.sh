@@ -3,7 +3,7 @@ do_vsa=1
 do_plate=1
 do_align=1
 
-plates=(28 31 35)
+plates=()
 file="viewsideal.rootrc"
 
 mkdir out
@@ -41,7 +41,8 @@ if [ $do_plate == 1 ]; then
     # printf '%s\n' "${plates[@]}" | xargs -i -P 8 bash -c 'echo vsa ${brick}.{}.0.0 && /usr/bin/time -v viewsideal -id=${brick}.{}.0.0 -v=1 > out/${brick}.{}.0.0.vsa.txt 2>&1'
     printf '%s\n' "${plates[@]}" | xargs -i -P 8 bash -c 'echo ab0 ${brick}.{}.0.0 && /usr/bin/time -v mosalignbeam -id=${brick}.{}.0.0 -v=1 > out/${brick}.{}.0.0.ab0.txt 2>&1'
     for p in "${plates[@]}"; do
-        mv ${brick}.${p}.0.0.0.cp.root ${brick}.${p}.0.0.cp.root 
+        plate=$(printf "p%03d" $(( 10#$p )))
+        mv $plate/$brick.$p.0.0.0.cp.root $plate/$brick.$p.0.0.cp.root 
     done
 
 fi

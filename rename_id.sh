@@ -1,9 +1,9 @@
 #!/bin/sh
-BRICKID1=21
-BRICKID2=121
+BRICKID1=34
+BRICKID2=834
 BRICKFOLDER1="$(printf "b%0*d" 6 $BRICKID1)"
 BRICKFOLDER2="$(printf "b%0*d" 6 $BRICKID2)"
-BRICKPATH="/eos/experiment/sndlhc/emulsionData/emureco_Napoli/RUN1/b000121/cells"
+BRICKPATH="/eos/experiment/sndlhc/emulsionData/emureco_Napoli/RUN8/b000034/cells"
 for CELL in $(seq 0 323); do
     xcell=$((CELL % 18 + 1))
     ycell=$((CELL / 18 + 1))
@@ -23,9 +23,9 @@ for CELL in $(seq 0 323); do
         mv $plate/$BRICKID1.$p.0.0.cp.root ../$BRICKFOLDER2/$plate/$BRICKID2.$p.0.0.cp.root
     done
     mv $BRICKFOLDER1.0.0.0.trk.root ../$BRICKFOLDER2/$BRICKFOLDER2.0.0.0.trk.root
-    mv $BRICKFOLDER1.0.0.0.vtx.root ../$BRICKFOLDER2/$BRICKFOLDER2.0.0.0.vtx.root
-    mv $BRICKFOLDER1.0.0.0.vtx.discimp.root ../$BRICKFOLDER2/$BRICKFOLDER2.0.0.0.vtx.discimp.root
-    mv $BRICKFOLDER1.0.0.0.vtx.refit.root ../$BRICKFOLDER2/$BRICKFOLDER2.0.0.0.vtx.refit.root
+    # mv $BRICKFOLDER1.0.0.0.vtx.root ../$BRICKFOLDER2/$BRICKFOLDER2.0.0.0.vtx.root
+    # mv $BRICKFOLDER1.0.0.0.vtx.discimp.root ../$BRICKFOLDER2/$BRICKFOLDER2.0.0.0.vtx.discimp.root
+    # mv $BRICKFOLDER1.0.0.0.vtx.refit.root ../$BRICKFOLDER2/$BRICKFOLDER2.0.0.0.vtx.refit.root
     rm *save.rootrc
     mv *.rootrc ../$BRICKFOLDER2/
     mv *.sh ../$BRICKFOLDER2/
