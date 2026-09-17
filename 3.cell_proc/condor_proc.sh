@@ -35,9 +35,7 @@ ln -s $EXP_DIR/$BRICKFOLDER.0.0.0.set.root .
 ln -s $EXP_DIR/viewsideal.rootrc ./viewsideal.rootrc
 ln -s $EXP_DIR/viewsideal.sh .
 ln -s $EXP_DIR/mosalignbeam.sh .
-ln -s $EXP_DIR/moslink.sh .
-ln -s $EXP_DIR/mosmerge.sh .
-
+ln -s $EXP_DIR/mosalignbeam.rootrc .
 
 echo "viewsideal $BRICKID.$PLATENUMBER.0.0"
 source viewsideal.sh $BRICKID $PLATENUMBER
