@@ -51,14 +51,14 @@ source scanset.sh $BRICKID
 
 cp alignR2.rootrc align.rootrc
 echo "align 2 $BRICKID.0.0.0"
-source alignplate.sh $BRICKID $PLATENUMBER
+source alignplate.sh $BRICKID $PLATENUMBER 1
 
 echo "makescanset $BRICKID.0.0.0"
 source scanset.sh $BRICKID
 
 cp alignR1.rootrc align.rootrc
 echo "align 1 $BRICKID.0.0.0"
-source alignplate.sh $BRICKID $PLATENUMBER
+source alignplate.sh $BRICKID $PLATENUMBER 1
 
 mv AFF/$BRICKID.$PLATENEXT.0.0_$BRICKID.$PLATENUMBER.0.0.aff.par $MAIN_DIR/$BRICKID.$PLATENEXT.0.0_$BRICKID.$PLATENUMBER.$xcell.$ycell.aff.par
 mv AFF/$BRICKID.$PLATENEXT.0.0_$BRICKID.$PLATENUMBER.0.0.al.root $MAIN_DIR/$BRICKID.$PLATENEXT.0.0_$BRICKID.$PLATENUMBER.$xcell.$ycell.al.root
