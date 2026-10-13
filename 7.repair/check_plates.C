@@ -49,7 +49,7 @@ void check_cell(int cellx, int celly, int plate) {
     c->cd(4);
     couples->Draw("eCHI2P:s.eY:s.eX","eCHI2P<3","prof colz");
     c->cd(5);
-    couples->Draw("s.eTY:s.eTX","abs(s.eTX)<0.025&&abs(s.eTY)<0.025","colz");
+    couples->Draw("s.eTY:s.eTX","abs(s.eTX)<0.025&&abs(s.eTY)<0.025&&eN1==1&&eN2==1","colz");
     c->cd(6);
     couples->Draw("eCHI2P>>h4(100,0,3)","","");
     couples->Draw("eCHI2P","eN1==1&&eN2==1","same");

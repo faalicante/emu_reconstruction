@@ -13,9 +13,10 @@ then
   
     seq 1 57 | xargs -i -P 8 bash -c 'echo vsa ${brick}.{}.0.0 && /usr/bin/time -v viewsideal -id=${brick}.{}.0.0 -v=1 > out/${brick}.{}.0.0.vsa.txt 2>&1'
     seq 1 57 | xargs -i -P 8 bash -c 'echo ab0 ${brick}.{}.0.0 && /usr/bin/time -v mosalignbeam -id=${brick}.{}.0.0 -v=1 > out/${brick}.{}.0.0.ab0.txt 2>&1'
-    seq 1 57 | xargs -i -P 8 bash -c 'echo mln ${brick}.{}.0.0 && /usr/bin/time -v moslink -id=${brick}.{}.0.0 -v=2 > out/${brick}.{}.0.0.mln.txt 2>&1'
-    seq 1 57 | xargs -i -P 8 bash -c 'echo mlm ${brick}.{}.0.0 && /usr/bin/time -v moslink -id=${brick}.{}.0.0 -v=2 -merge > out/${brick}.{}.0.0.mlm.txt 2>&1'
-
+    for p in $(seq 1 57); do
+        plate=$(printf "p%03d" $(( 10#$p )))
+        mv $plate/$brick.$p.0.0.0.cp.root $plate/$brick.$p.0.0.cp.root 
+    done
 fi
 
 if [ $do_align == 1 ]
